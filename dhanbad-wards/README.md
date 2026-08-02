@@ -4,7 +4,7 @@ A static, bilingual ward finder for Dhanbad Municipal Corporation. It runs entir
 
 ## Important: verify data before launch
 
-`wards.geojson` contains real ward geometry from the local SBM ward dump and 2026 councillor names from `councillors_2026.csv`. **Phone numbers and LGD ward codes are still pending** and must be replaced with verified official data when available.
+`wards.geojson` contains real ward geometry from the local SBM ward dump and 2026 councillor names and phone numbers from `councillors_2026.csv`. **LGD ward codes are still pending** and must be replaced with verified official data when available.
 
 The geometry source contains all 55 Dhanbad Municipal Corporation wards as WGS84 Polygons. Councillor and reservation details are joined by ward number from the CSV.
 
@@ -38,7 +38,7 @@ Each output feature must retain this property schema:
   "reservation_category": "अनारक्षित",
   "reservation_category_en": "Unreserved/General",
   "gender_category": "अन्य(Other)",
-  "councillor_phone": "+91 98765 43210",
+  "councillor_phone": "7779949700",
   "lgd_ward_code": "Verified LGD code"
 }
 ```
@@ -46,6 +46,8 @@ Each output feature must retain this property schema:
 Geometry must be valid GeoJSON `Polygon` or `MultiPolygon` in WGS84/EPSG:4326 coordinates: `[longitude, latitude]`. Additional properties are safe to retain. Keep `ward_no`, `ward_name`, `councillor_name`, `councillor_name_en`, `councillor_phone`, and `lgd_ward_code` unchanged so the website needs no code changes. The result reserves a line for `councillor_name_en`: it stays blank when empty and displays automatically when a verified English name is supplied.
 
 Update `councillors_2026.csv` and rerun the preprocessor whenever councillor information changes. Do not edit generated names directly in `wards.geojson`, because regeneration overwrites them.
+
+Phone numbers must contain 10 digits. Separate multiple numbers for one ward with a semicolon, for example `7909065575; 9308037666`; the website renders each as a separate call link.
 
 ## Run locally
 

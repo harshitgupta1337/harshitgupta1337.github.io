@@ -159,11 +159,18 @@ function showWard(feature, source) {
   elements.lgdCode.textContent = ward.lgd_ward_code;
 
   if (ward.councillor_phone) {
-    elements.councillorPhone.textContent = ward.councillor_phone;
-    elements.councillorPhone.href = `tel:${ward.councillor_phone.replace(/[^+\d]/g, "")}`;
+    const phoneLinks = ward.councillor_phone.split(";").map((value) => {
+      const phone = value.trim();
+      const link = document.createElement("a");
+      link.textContent = phone;
+      link.href = `tel:${phone}`;
+      return link;
+    });
+    elements.councillorPhone.replaceChildren(...phoneLinks);
     elements.councillorPhone.hidden = false;
     elements.phonePending.hidden = true;
   } else {
+    elements.councillorPhone.replaceChildren();
     elements.councillorPhone.hidden = true;
     elements.phonePending.hidden = false;
     elements.phonePending.textContent = "Data pending";

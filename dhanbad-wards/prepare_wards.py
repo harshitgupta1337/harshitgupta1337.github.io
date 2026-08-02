@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+import re
 
 
 DHANBAD_ULB_CODE = "801775"
@@ -26,6 +27,10 @@ def load_councillors(path: Path) -> dict[int, dict]:
         raise ValueError("Councillor CSV must contain each ward from 1 through 55")
     if any(not row["councillor_name"].strip() for row in rows):
         raise ValueError("Every councillor must have a name")
+    for row in rows:
+        phones = [phone.strip() for phone in row["councillor_phone"].split(";")]
+        if not phones or any(not re.fullmatch(r"\d{10}", phone) for phone in phones):
+            raise ValueError(f"Ward {row['ward_no']} has an invalid phone number")
     return councillors
 
 
