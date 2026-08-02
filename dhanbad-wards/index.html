@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FBF6EC">
+  <meta name="description" content="Find your Dhanbad Municipal Corporation ward and councillor details.">
+  <title>Know Your Ward | Mai Hoon Dhanbad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.2.0/turf.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="organization">मैं हूँ धनबाद <span aria-hidden="true">·</span> Mai Hoon Dhanbad</p>
+      <h1>अपना वार्ड जानें <span>Know Your Ward</span></h1>
+      <p class="intro">अपने स्थान से धनबाद नगर निगम का वार्ड और पार्षद विवरण खोजें।<br>Find your Dhanbad ward and councillor details using your location.</p>
+      <button class="primary-button" id="locate-button" type="button" disabled>
+        <span aria-hidden="true">⌖</span>
+        <span>अपना वार्ड खोजें <small>Find My Ward</small></span>
+      </button>
+      <p class="privacy-note">आपका स्थान आपके डिवाइस पर ही रहता है। Location stays on your device.</p>
+    </header>
+
+    <section class="status-panel" id="status-panel" role="status" aria-live="polite">
+      <div>
+        <p id="status-message">वार्ड मानचित्र लोड हो रहा है… / Loading ward map…</p>
+        <p class="location-readout" id="location-readout" hidden></p>
+      </div>
+      <button class="text-button" id="retry-button" type="button" hidden>फिर कोशिश करें / Retry</button>
+    </section>
+
+    <section class="map-section" aria-labelledby="map-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">धनबाद नगर निगम</p>
+          <h2 id="map-heading">Ward map</h2>
+        </div>
+        <p class="map-key"><span></span> Ward boundary</p>
+      </div>
+      <div id="map" role="application" aria-label="Interactive map of Dhanbad Municipal Corporation wards"></div>
+    </section>
+
+    <section class="result-card" id="result-card" aria-labelledby="result-heading" hidden>
+      <div class="ward-seal" aria-hidden="true">
+        <span>वार्ड</span>
+        <strong id="seal-number"></strong>
+        <small>WARD</small>
+      </div>
+      <div class="result-copy">
+        <p class="success-label">वार्ड मिल गया / Ward found</p>
+        <h2 id="result-heading"></h2>
+        <dl class="details-list">
+          <div>
+            <dt>पार्षद / Councillor</dt>
+            <dd id="councillor-name"></dd>
+          </div>
+          <div>
+            <dt>फ़ोन / Phone</dt>
+            <dd><a id="councillor-phone" href=""></a><span id="phone-pending"></span></dd>
+          </div>
+          <div>
+            <dt>LGD ward code</dt>
+            <dd id="lgd-code"></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="manual-lookup" aria-labelledby="manual-heading">
+      <div>
+        <p class="eyebrow">GPS के बिना / Without GPS</p>
+        <h2 id="manual-heading">वार्ड सूची से चुनें <span>Choose from the ward list</span></h2>
+      </div>
+      <div class="select-wrap">
+        <label for="ward-select">वार्ड नंबर या नाम / Ward number or name</label>
+        <select id="ward-select" disabled>
+          <option value="">वार्ड चुनें / Select a ward</option>
+        </select>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
