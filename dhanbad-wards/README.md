@@ -49,6 +49,27 @@ Update `councillors_2026.csv` and rerun the preprocessor whenever councillor inf
 
 Phone numbers must contain 10 digits. Separate multiple numbers for one ward with a semicolon, for example `7909065575; 9308037666`; the website renders each as a separate call link.
 
+## Check GPS ground truth against ward boundaries
+
+`compare_ward_ground_truth.py` accepts a CSV with `latitude`, `longitude`, and the ground-truth `ward_no`. For example:
+
+```csv
+location_id,latitude,longitude,ward_no
+sample-1,23.7951,86.2885,1
+sample-2,23.8123,86.3012,2
+```
+
+Run the comparison from the repository root:
+
+```bash
+./venv/bin/python compare_ward_ground_truth.py ground_truth.csv \
+  --output ward_comparison.csv
+```
+
+Use `--latitude-column`, `--longitude-column`, or `--ground-truth-column` when the input uses different headings. Use `--geojson` and `--geojson-ward-column` for a different boundary file or ward property.
+
+The output retains every input column and adds `calculated_ward_no`, `matched_geojson_wards`, `comparison_status`, and `is_incorrect`. Status is one of `match`, `mismatch`, `outside_all_wards`, `ambiguous_boundary`, or `invalid_input`. Filter `is_incorrect` to `True` to review all records that need attention. `ambiguous_boundary` means the GPS point lies on an edge covered by more than one ward.
+
 ## Run locally
 
 The page fetches `wards.geojson`, so opening `index.html` through a `file://` URL will not work in most browsers. Serve the directory over HTTP:

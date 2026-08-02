@@ -25,8 +25,22 @@
         <span aria-hidden="true">⌖</span>
         <span>अपना वार्ड खोजें <small>Find My Ward</small></span>
       </button>
+      <p class="boundary-disclaimer"><strong>महत्वपूर्ण / Important:</strong> वार्ड सीमाएँ 2022 के डेटा पर आधारित हैं। 2026 के पुनर्गठन का सीमा डेटा उपलब्ध नहीं है, इसलिए दिखाया गया वार्ड गलत हो सकता है। / Ward boundaries are based on 2022 data. Boundary data for the 2026 reorganization is not available, so the ward shown may be incorrect.</p>
       <p class="privacy-note">आपका स्थान आपके डिवाइस पर ही रहता है। Location stays on your device.</p>
     </header>
+
+    <section class="ward-lookup" aria-labelledby="ward-lookup-heading">
+      <div>
+        <p class="eyebrow">या वार्ड चुनें / Or choose a ward</p>
+        <h2 id="ward-lookup-heading">अपना वार्ड नंबर चुनें <span>Select your ward number</span></h2>
+      </div>
+      <div class="select-wrap">
+        <label for="ward-select">वार्ड नंबर या नाम / Ward number or name</label>
+        <select id="ward-select" disabled>
+          <option value="">वार्ड चुनें / Select a ward</option>
+        </select>
+      </div>
+    </section>
 
     <section class="status-panel" id="status-panel" role="status" aria-live="polite">
       <div>
@@ -34,17 +48,6 @@
         <p class="location-readout" id="location-readout" hidden></p>
       </div>
       <button class="text-button" id="retry-button" type="button" hidden>फिर कोशिश करें / Retry</button>
-    </section>
-
-    <section class="map-section" aria-labelledby="map-heading">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">धनबाद नगर निगम</p>
-          <h2 id="map-heading">Ward map</h2>
-        </div>
-        <p class="map-key"><span></span> Ward boundary</p>
-      </div>
-      <div id="map" role="application" aria-label="Interactive map of Dhanbad Municipal Corporation wards"></div>
     </section>
 
     <section class="result-card" id="result-card" aria-labelledby="result-heading" hidden>
@@ -76,17 +79,36 @@
       </div>
     </section>
 
-    <section class="manual-lookup" aria-labelledby="manual-heading">
+    <section class="map-section" aria-labelledby="map-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">धनबाद नगर निगम</p>
+          <h2 id="map-heading">Ward map</h2>
+        </div>
+        <p class="map-key"><span></span> Ward boundary</p>
+      </div>
+      <div id="map" role="application" aria-label="Interactive map of Dhanbad Municipal Corporation wards"></div>
+    </section>
+
+    <section class="coordinate-lookup" aria-labelledby="coordinate-heading">
       <div>
-        <p class="eyebrow">GPS के बिना / Without GPS</p>
-        <h2 id="manual-heading">वार्ड सूची से चुनें <span>Choose from the ward list</span></h2>
+        <p class="eyebrow">उन्नत विकल्प / Advanced option</p>
+        <h2 id="coordinate-heading">अक्षांश और देशांतर दर्ज करें <span>Enter latitude and longitude</span></h2>
+        <p class="coordinate-help">सटीक निर्देशांक पता होने पर इस विकल्प का उपयोग करें। / Use this when you know the exact coordinates.</p>
       </div>
-      <div class="select-wrap">
-        <label for="ward-select">वार्ड नंबर या नाम / Ward number or name</label>
-        <select id="ward-select" disabled>
-          <option value="">वार्ड चुनें / Select a ward</option>
-        </select>
-      </div>
+      <form class="coordinate-form" id="coordinate-form">
+        <div class="coordinate-fields">
+          <label for="latitude-input">
+            अक्षांश / Latitude
+            <input id="latitude-input" name="latitude" type="number" min="-90" max="90" step="any" inputmode="decimal" placeholder="23.795100" required disabled>
+          </label>
+          <label for="longitude-input">
+            देशांतर / Longitude
+            <input id="longitude-input" name="longitude" type="number" min="-180" max="180" step="any" inputmode="decimal" placeholder="86.288500" required disabled>
+          </label>
+        </div>
+        <button class="coordinate-button" id="coordinate-button" type="submit" disabled>निर्देशांक से खोजें / Find by coordinates</button>
+      </form>
     </section>
   </main>
 </body>

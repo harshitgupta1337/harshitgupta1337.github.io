@@ -37,11 +37,13 @@ body {
 }
 
 button,
+input,
 select {
   font: inherit;
 }
 
 button,
+input,
 select,
 a {
   -webkit-tap-highlight-color: transparent;
@@ -146,6 +148,20 @@ h2 {
   margin: 0.8rem 0 0;
   color: var(--muted);
   font-size: 0.78rem;
+}
+
+.boundary-disclaimer {
+  max-width: 680px;
+  margin: 1rem 0 0;
+  padding: 0.7rem 0.85rem;
+  border-left: 4px solid var(--terracotta);
+  color: var(--ink);
+  background: rgb(232 163 61 / 14%);
+  font-size: 0.82rem;
+}
+
+.boundary-disclaimer strong {
+  color: var(--terracotta);
 }
 
 .status-panel {
@@ -338,7 +354,8 @@ h2 {
   gap: 0.2rem;
 }
 
-.manual-lookup {
+.ward-lookup,
+.coordinate-lookup {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(250px, 0.8fr);
   gap: 1.5rem;
@@ -346,10 +363,15 @@ h2 {
   padding: 1.3rem;
   border: 1px solid var(--border);
   border-radius: 6px;
+}
+
+.ward-lookup {
+  align-items: center;
   background: rgb(243 231 210 / 62%);
 }
 
-.manual-lookup h2 span {
+.ward-lookup h2 span,
+.coordinate-lookup h2 span {
   display: block;
   font-size: 0.64em;
 }
@@ -361,6 +383,35 @@ h2 {
   font-weight: 700;
 }
 
+.coordinate-lookup {
+  align-items: start;
+  background: rgb(255 253 248 / 64%);
+}
+
+.coordinate-help {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.coordinate-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.coordinate-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.coordinate-fields label {
+  min-width: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.coordinate-fields input,
 .select-wrap select {
   width: 100%;
   min-height: 48px;
@@ -369,6 +420,32 @@ h2 {
   border-radius: 4px;
   color: var(--ink);
   background: var(--white);
+}
+
+.coordinate-fields input {
+  display: block;
+  margin-top: 0.4rem;
+  padding: 0.65rem 0.7rem;
+}
+
+.coordinate-button {
+  min-height: 46px;
+  padding: 0.6rem 0.8rem;
+  border: 0;
+  border-radius: 4px;
+  color: var(--white);
+  background: var(--teal-dark);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.coordinate-button:hover:not(:disabled) {
+  background: var(--teal);
+}
+
+.coordinate-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
 }
 
 @keyframes reveal {
@@ -390,7 +467,8 @@ h2 {
   }
 
   .result-card,
-  .manual-lookup {
+  .ward-lookup,
+  .coordinate-lookup {
     grid-template-columns: 1fr;
   }
 
@@ -399,6 +477,10 @@ h2 {
   }
 
   .details-list {
+    grid-template-columns: 1fr;
+  }
+
+  .coordinate-fields {
     grid-template-columns: 1fr;
   }
 }

@@ -26,6 +26,10 @@ const elements = {
   statusPanel: document.querySelector("#status-panel"),
   statusMessage: document.querySelector("#status-message"),
   locationReadout: document.querySelector("#location-readout"),
+  coordinateForm: document.querySelector("#coordinate-form"),
+  latitudeInput: document.querySelector("#latitude-input"),
+  longitudeInput: document.querySelector("#longitude-input"),
+  coordinateButton: document.querySelector("#coordinate-button"),
   wardSelect: document.querySelector("#ward-select"),
   resultCard: document.querySelector("#result-card"),
   sealNumber: document.querySelector("#seal-number"),
@@ -41,6 +45,7 @@ let map;
 let wardData;
 let wardLayer;
 let wardLayers = new Map();
+let locationMarker;
 let mapResizeObserver;
 
 function setStatus(message, state = "info", showRetry = false) {
@@ -109,6 +114,9 @@ function validateWardData(data) {
 
 async function loadWardData() {
   elements.locateButton.disabled = true;
+  elements.latitudeInput.disabled = true;
+  elements.longitudeInput.disabled = true;
+  elements.coordinateButton.disabled = true;
   elements.wardSelect.disabled = true;
   setStatus("वार्ड मानचित्र लोड हो रहा है… / Loading ward map…");
 
@@ -122,8 +130,11 @@ async function loadWardData() {
     addWardLayer();
     populateWardSelect();
     elements.locateButton.disabled = false;
+    elements.latitudeInput.disabled = false;
+    elements.longitudeInput.disabled = false;
+    elements.coordinateButton.disabled = false;
     elements.wardSelect.disabled = false;
-    setStatus("मानचित्र तैयार है। GPS या सूची से खोजें। / Map ready. Use GPS or choose from the list.", "success");
+    setStatus("मानचित्र तैयार है। GPS, निर्देशांक या सूची से खोजें। / Map ready. Use GPS, coordinates, or the ward list.", "success");
   } catch (error) {
     console.error(error);
     setStatus(
@@ -146,6 +157,24 @@ function highlightWard(wardNumber) {
   const selectedLayer = wardLayers.get(String(wardNumber));
   selectedLayer.bringToFront();
   fitMapBounds(selectedLayer.getBounds(), { padding: [28, 28], maxZoom: 14 });
+}
+
+function showLocationMarker(longitude, latitude, source) {
+  const coordinates = [latitude, longitude];
+  const label = source === "gps" ? "Detected location" : "Entered location";
+
+  if (locationMarker) {
+    locationMarker.setLatLng(coordinates);
+  } else {
+    locationMarker = L.marker(coordinates).addTo(map);
+  }
+  locationMarker.bindTooltip(label).openTooltip();
+}
+
+function clearLocationMarker() {
+  if (!locationMarker) return;
+  locationMarker.remove();
+  locationMarker = undefined;
 }
 
 function showWard(feature, source) {
@@ -178,37 +207,50 @@ function showWard(feature, source) {
 
   elements.resultCard.hidden = false;
   setStatus(
-    source === "gps"
-      ? `आपका स्थान ${ward.ward_name} में है। / Your location is in ${ward.ward_name}.`
-      : `${ward.ward_name} चुना गया। / ${ward.ward_name} selected.`,
+    source === "list"
+      ? `${ward.ward_name} चुना गया। / ${ward.ward_name} selected.`
+      : source === "coordinates"
+        ? `दर्ज किया गया स्थान ${ward.ward_name} में है। / The entered location is in ${ward.ward_name}.`
+        : `आपका स्थान ${ward.ward_name} में है। / Your location is in ${ward.ward_name}.`,
     "success",
   );
 }
 
-function resetResult() {
+function resetResult(fitWards = true) {
   elements.resultCard.hidden = true;
   if (wardLayer) {
     wardLayer.setStyle(DEFAULT_STYLE);
-    fitMapBounds(wardLayer.getBounds(), { padding: [18, 18] });
+    if (fitWards) fitMapBounds(wardLayer.getBounds(), { padding: [18, 18] });
   }
+}
+
+function lookupCoordinates(longitude, latitude, source, readout) {
+  elements.locationReadout.textContent = readout;
+  elements.locationReadout.hidden = false;
+  showLocationMarker(longitude, latitude, source);
+  const match = findWard(longitude, latitude);
+
+  if (match) {
+    showWard(match, source);
+    return;
+  }
+
+  resetResult(false);
+  map.setView([latitude, longitude], 14);
+  setStatus(
+    "यह स्थान उपलब्ध वार्ड सीमाओं के बाहर है या सीमा के बहुत पास है। नीचे सूची से वार्ड चुनें। / This point is outside the available boundaries or near an edge. Choose a ward below.",
+    "error",
+  );
 }
 
 function handlePosition(position) {
   const { longitude, latitude, accuracy } = position.coords;
-  elements.locationReadout.textContent = `Detected location: ${latitude.toFixed(6)}, ${longitude.toFixed(6)} (±${Math.round(accuracy)} m)`;
-  elements.locationReadout.hidden = false;
-  const match = findWard(longitude, latitude);
   elements.locateButton.disabled = false;
-
-  if (match) {
-    showWard(match, "gps");
-    return;
-  }
-
-  resetResult();
-  setStatus(
-    "यह स्थान उपलब्ध वार्ड सीमाओं के बाहर है या सीमा के बहुत पास है। नीचे सूची से वार्ड चुनें। / This point is outside the available boundaries or near an edge. Choose a ward below.",
-    "error",
+  lookupCoordinates(
+    longitude,
+    latitude,
+    "gps",
+    `Detected location: ${latitude.toFixed(6)}, ${longitude.toFixed(6)} (±${Math.round(accuracy)} m)`,
   );
 }
 
@@ -224,6 +266,7 @@ function handlePositionError(error) {
 
 function locateUser() {
   resetResult();
+  clearLocationMarker();
   elements.locationReadout.hidden = true;
   if (!window.isSecureContext) {
     setStatus(
@@ -249,18 +292,52 @@ function locateUser() {
   });
 }
 
+function handleCoordinateSubmit(event) {
+  event.preventDefault();
+  const latitude = Number(elements.latitudeInput.value);
+  const longitude = Number(elements.longitudeInput.value);
+
+  if (
+    !Number.isFinite(latitude)
+    || !Number.isFinite(longitude)
+    || latitude < -90
+    || latitude > 90
+    || longitude < -180
+    || longitude > 180
+  ) {
+    resetResult();
+    clearLocationMarker();
+    elements.locationReadout.hidden = true;
+    setStatus(
+      "सही अक्षांश (-90 से 90) और देशांतर (-180 से 180) दर्ज करें। / Enter a valid latitude (-90 to 90) and longitude (-180 to 180).",
+      "error",
+    );
+    return;
+  }
+
+  lookupCoordinates(
+    longitude,
+    latitude,
+    "coordinates",
+    `Entered location: ${latitude.toFixed(6)}, ${longitude.toFixed(6)}`,
+  );
+}
+
 elements.locateButton.addEventListener("click", locateUser);
 elements.retryButton.addEventListener("click", loadWardData);
+elements.coordinateForm.addEventListener("submit", handleCoordinateSubmit);
 elements.wardSelect.addEventListener("change", () => {
+  elements.locationReadout.hidden = true;
+  clearLocationMarker();
   if (!elements.wardSelect.value) {
     resetResult();
-    setStatus("GPS या सूची से खोजें। / Use GPS or choose from the list.");
+    setStatus("GPS, निर्देशांक या सूची से खोजें। / Use GPS, coordinates, or the ward list.");
     return;
   }
   const match = wardData.features.find(
     (feature) => String(feature.properties.ward_no) === elements.wardSelect.value,
   );
-  showWard(match, "manual");
+  showWard(match, "list");
 });
 
 loadWardData();
