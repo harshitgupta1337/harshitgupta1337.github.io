@@ -4,13 +4,13 @@ A static, bilingual ward finder for Dhanbad Municipal Corporation. It runs entir
 
 ## Important: verify data before launch
 
-`wards.geojson` contains the real ward geometry filtered from the local SBM ward dump, but **councillor names, phone numbers, and LGD ward codes are placeholders**. MHD must replace these values with verified official data before publishing the tool.
+`wards.geojson` contains real ward geometry from the local SBM ward dump and 2026 councillor names from `councillors_2026.csv`. **Phone numbers and LGD ward codes are still pending** and must be replaced with verified official data when available.
 
-The source contains all 55 Dhanbad Municipal Corporation wards as WGS84 Polygons. It does not contain councillor contact information.
+The geometry source contains all 55 Dhanbad Municipal Corporation wards as WGS84 Polygons. Councillor and reservation details are joined by ward number from the CSV.
 
 ## Prepare the ward data
 
-The source file is newline-delimited GeoJSON (GeoJSONL): each line is one `Feature`, rather than the complete `FeatureCollection` browsers expect. `prepare_wards.py` streams the large file, selects records whose string-valued `ulbcode` is `801775`, validates that wards 1–55 occur exactly once, and writes a compact `wards.geojson`.
+The source file is newline-delimited GeoJSON (GeoJSONL): each line is one `Feature`, rather than the complete `FeatureCollection` browsers expect. `prepare_wards.py` streams the large file, selects records whose string-valued `ulbcode` is `801775`, joins `councillors_2026.csv`, validates both sources contain wards 1–55 exactly once, and writes a compact `wards.geojson`.
 
 From the repository root, run:
 
@@ -21,7 +21,10 @@ From the repository root, run:
 Custom paths are also supported:
 
 ```bash
-./venv/bin/python prepare_wards.py --input path/to/source.geojsonl --output wards.geojson
+./venv/bin/python prepare_wards.py \
+  --input path/to/source.geojsonl \
+  --councillors path/to/councillors.csv \
+  --output wards.geojson
 ```
 
 Each output feature must retain this property schema:
@@ -30,15 +33,19 @@ Each output feature must retain this property schema:
 {
   "ward_no": 54,
   "ward_name": "Ward 54",
-  "councillor_name": "Verified councillor name",
+  "councillor_name": "नीरज कुमार सिंह",
+  "councillor_name_en": "",
+  "reservation_category": "अनारक्षित",
+  "reservation_category_en": "Unreserved/General",
+  "gender_category": "अन्य(Other)",
   "councillor_phone": "+91 98765 43210",
   "lgd_ward_code": "Verified LGD code"
 }
 ```
 
-Geometry must be valid GeoJSON `Polygon` or `MultiPolygon` in WGS84/EPSG:4326 coordinates: `[longitude, latitude]`. Additional properties are safe to retain. Keep the five properties above unchanged so the website needs no code changes.
+Geometry must be valid GeoJSON `Polygon` or `MultiPolygon` in WGS84/EPSG:4326 coordinates: `[longitude, latitude]`. Additional properties are safe to retain. Keep `ward_no`, `ward_name`, `councillor_name`, `councillor_name_en`, `councillor_phone`, and `lgd_ward_code` unchanged so the website needs no code changes. The result reserves a line for `councillor_name_en`: it stays blank when empty and displays automatically when a verified English name is supplied.
 
-After preprocessing, replace every `Data pending` and empty `councillor_phone` value in `wards.geojson` with verified information. Re-running `prepare_wards.py` overwrites those edits, so keep the authoritative contact list outside the generated file and reapply it after regeneration until the preprocessor is connected to that source.
+Update `councillors_2026.csv` and rerun the preprocessor whenever councillor information changes. Do not edit generated names directly in `wards.geojson`, because regeneration overwrites them.
 
 ## Run locally
 

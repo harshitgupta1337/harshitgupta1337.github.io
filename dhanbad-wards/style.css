@@ -321,6 +321,14 @@ h2 {
   font-weight: 700;
 }
 
+.councillor-name-en {
+  display: block;
+  min-height: 1.5em;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
 .details-list a {
   color: var(--terracotta);
 }

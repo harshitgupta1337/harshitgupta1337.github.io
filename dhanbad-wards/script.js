@@ -31,6 +31,7 @@ const elements = {
   sealNumber: document.querySelector("#seal-number"),
   resultHeading: document.querySelector("#result-heading"),
   councillorName: document.querySelector("#councillor-name"),
+  councillorNameEn: document.querySelector("#councillor-name-en"),
   councillorPhone: document.querySelector("#councillor-phone"),
   phonePending: document.querySelector("#phone-pending"),
   lgdCode: document.querySelector("#lgd-code"),
@@ -97,7 +98,7 @@ function populateWardSelect() {
 }
 
 function validateWardData(data) {
-  const required = ["ward_no", "ward_name", "councillor_name", "councillor_phone", "lgd_ward_code"];
+  const required = ["ward_no", "ward_name", "councillor_name", "councillor_name_en", "councillor_phone", "lgd_ward_code"];
   if (data.type !== "FeatureCollection" || !Array.isArray(data.features) || !data.features.length) {
     throw new Error("Invalid GeoJSON FeatureCollection");
   }
@@ -154,6 +155,7 @@ function showWard(feature, source) {
   elements.sealNumber.textContent = ward.ward_no;
   elements.resultHeading.textContent = ward.ward_name;
   elements.councillorName.textContent = ward.councillor_name;
+  elements.councillorNameEn.textContent = ward.councillor_name_en.trim() || "\u00A0";
   elements.lgdCode.textContent = ward.lgd_ward_code;
 
   if (ward.councillor_phone) {
