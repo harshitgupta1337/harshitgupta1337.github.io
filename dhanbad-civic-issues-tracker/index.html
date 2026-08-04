@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civic Issues Tracker Dashboard MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Issue list and filters">
+      <div class="sidebar__header">
+        <p class="eyebrow">Civic Issues Tracker</p>
+        <h1>Dhanbad neighborhood dashboard</h1>
+        <p class="sidebar__lede">Filter community issues by text, category, and the exact map viewport currently visible on the right.</p>
+      </div>
+
+      <div class="filters" aria-label="Issue filters">
+        <label class="field">
+          <span class="field__label">Search</span>
+          <input id="search-input" type="search" placeholder="Search title, description, status..." autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span class="field__label">Category</span>
+          <select id="category-filter">
+            <option value="All">All categories</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Sanitation">Sanitation</option>
+            <option value="Traffic">Traffic</option>
+            <option value="Drainage">Drainage</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Status</span>
+          <select id="status-filter">
+            <option value="All">All status values</option>
+            <option value="Unresolved">Unresolved</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </label>
+
+        <div class="filters__meta" id="results-meta" aria-live="polite"></div>
+      </div>
+
+      <div class="issue-list" id="issue-list" aria-live="polite"></div>
+    </aside>
+
+    <main class="map-panel" aria-label="Interactive map">
+      <div id="map" class="map-panel__map"></div>
+    </main>
+  </div>
+
+  <div id="media-modal" class="media-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Media viewer">
+    <div class="media-modal__backdrop" data-modal-backdrop>
+      <div class="media-modal__frame" role="document">
+        <button type="button" class="media-modal__close" id="media-modal-close" aria-label="Close media viewer">&times;</button>
+        <button type="button" class="media-modal__nav media-modal__nav--prev" id="media-modal-prev" aria-label="Previous media">&#10094;</button>
+        <div id="media-modal-content" class="media-modal__content"></div>
+        <button type="button" class="media-modal__nav media-modal__nav--next" id="media-modal-next" aria-label="Next media">&#10095;</button>
+        <p id="media-modal-position" class="media-modal__position" aria-live="polite"></p>
+        <p id="media-modal-caption" class="media-modal__caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="issues-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
