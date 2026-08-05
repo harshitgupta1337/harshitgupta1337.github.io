@@ -196,5 +196,22 @@
       }
     ],
     "ward_number": 25
+  },
+  {
+    "id": "10",
+    "title": "Dangerously low electrical wire",
+    "description": "A dangerously low electrical wire is hanging over the road, posing a safety hazard.",
+    "category": "Infrastructure",
+    "latitude": 23.807956,
+    "longitude": 86.428987,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/10/wire.jpeg",
+        "alt": "Dangerously low electrical wire"
+      }
+    ],
+    "ward_number": 20
   }
 ]
