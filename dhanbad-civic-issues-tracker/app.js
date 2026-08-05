@@ -10,22 +10,36 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
   let issues;
+  let wards;
 
   try {
-    const response = await fetch("./issues-data.json");
-    if (!response.ok) {
-      throw new Error(`Issue data request failed with status ${response.status}`);
+    const [issuesResponse, wardsResponse] = await Promise.all([
+      fetch("./issues-data.json"),
+      fetch("./wards.geojson")
+    ]);
+    if (!issuesResponse.ok) {
+      throw new Error(`Issue data request failed with status ${issuesResponse.status}`);
+    }
+    if (!wardsResponse.ok) {
+      throw new Error(`Ward data request failed with status ${wardsResponse.status}`);
     }
 
-    const issueData = await response.json();
+    const [issueData, wardData] = await Promise.all([
+      issuesResponse.json(),
+      wardsResponse.json()
+    ]);
     if (!Array.isArray(issueData)) {
       throw new TypeError("Issue data must be an array");
     }
+    if (wardData.type !== "FeatureCollection" || !Array.isArray(wardData.features)) {
+      throw new TypeError("Ward data must be a GeoJSON FeatureCollection");
+    }
 
     issues = issueData.slice();
+    wards = wardData;
   } catch (error) {
-    console.error("Unable to load issue data.", error);
-    document.getElementById("results-meta").textContent = "Issue data could not be loaded.";
+    console.error("Unable to load map data.", error);
+    document.getElementById("results-meta").textContent = "Map data could not be loaded.";
     document.getElementById("issue-list").textContent = "Refresh the page to try again.";
     return;
   }
@@ -82,6 +96,32 @@ document.addEventListener("DOMContentLoaded", async () => {
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  map.createPane("wardBoundaries");
+  map.getPane("wardBoundaries").style.zIndex = 350;
+  const wardRenderer = L.svg({ pane: "wardBoundaries" });
+
+  L.geoJSON(wards, {
+    pane: "wardBoundaries",
+    renderer: wardRenderer,
+    interactive: true,
+    style: {
+      color: "#317864",
+      weight: 1.5,
+      opacity: 0.85,
+      fillColor: "#8bc6b2",
+      fillOpacity: 0.08
+    },
+    onEachFeature(feature, layer) {
+      const wardNumber = feature.properties?.ward_no;
+      if (Number.isInteger(wardNumber)) {
+        layer.bindTooltip(`Ward ${wardNumber}`, {
+          sticky: true,
+          direction: "top"
+        });
+      }
+    }
   }).addTo(map);
 
   function buildPopupMarkup(issue) {

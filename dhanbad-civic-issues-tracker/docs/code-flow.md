@@ -4,19 +4,19 @@ This document explains how the static MVP works from page load to interaction.
 
 ## 1. Page load
 
-The browser loads `index.html`, which pulls in three pieces in this order:
+The browser loads `index.html`, which pulls in two pieces in this order:
 
 1. Leaflet CSS and JavaScript from a CDN.
-2. `issues-data.js`, which exposes the mock issue records as `window.issuesData`.
-3. `app.js`, which reads the issue data and wires up the map, filters, list, and modal.
+2. `app.js`, which fetches the mock issue records from `issues-data.json`, then wires up the map, filters, list, and modal.
 
-That order matters because the app expects the data file to exist before it starts rendering.
+That order matters because Leaflet must be available before the app starts rendering.
 
 ## 2. Layout
 
-The page is split into two main regions:
+The page has a top toolbar above two main workspace regions:
 
-- The left sidebar holds the search field, category dropdown, results summary, and the issue cards.
+- The top toolbar holds the dashboard title, search field, category filter, status filter, and ward filter.
+- The left sidebar holds the results summary and issue cards for the current map view.
 - The right panel holds the Leaflet map.
 
 On smaller screens the layout stacks vertically, but the same logic still applies.
@@ -27,6 +27,8 @@ On smaller screens the layout stacks vertically, but the same logic still applie
 
 - `searchText` stores the current text search.
 - `category` stores the selected issue category.
+- `status` stores the selected issue status.
+- `ward` stores the selected ward number.
 - `selectedIssueId` tracks which issue is currently focused.
 - `activeBounds` stores the current Leaflet viewport bounds.
 - `markersById` maps each issue id to its Leaflet marker.
@@ -37,7 +39,7 @@ Centralizing these values makes it easy to re-run the same filter logic whenever
 
 When the DOM is ready, the script creates a Leaflet map centered on Dhanbad.
 
-Then it adds an OpenStreetMap tile layer and creates a circle marker for every issue in the mock dataset.
+Then it adds an OpenStreetMap tile layer, renders the ward polygons from `wards.geojson`, and creates a circle marker for every issue in the mock dataset. Ward boundaries appear below issue markers and show their ward number on hover.
 
 Each marker:
 
@@ -58,6 +60,8 @@ The filter checks three conditions for every issue:
 
 - The issue text must match the search query.
 - The issue category must match the selected category, unless the dropdown is set to `All`.
+- The issue status must match the selected status, unless the dropdown is set to `All`.
+- The issue ward number must match the selected ward, unless the dropdown is set to `All`.
 - The issue coordinates must fall inside `map.getBounds()`.
 
 Only issues that pass all three checks are rendered into the list.
