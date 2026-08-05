@@ -213,5 +213,22 @@
       }
     ],
     "ward_number": 20
+  },
+  {
+    "id": "11",
+    "title": "Huge garbage accumulation",
+    "description": "A huge garbage accumulation is present in the area, causing unhygienic conditions. Bhuli Azad nagar near krishna mandir Ward number 17.",
+    "category": "Sanitation",
+    "latitude": 23.804724,
+    "longitude": 86.39657,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/11/garbage.jpeg",
+        "alt": "Huge garbage accumulation"
+      }
+    ],
+    "ward_number": 16
   }
 ]
