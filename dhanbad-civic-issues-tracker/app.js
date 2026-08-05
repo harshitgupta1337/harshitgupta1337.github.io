@@ -8,12 +8,33 @@
   3. Media modal lifecycle management
 */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const issues = Array.isArray(window.issuesData) ? window.issuesData.slice() : [];
+document.addEventListener("DOMContentLoaded", async () => {
+  let issues;
+
+  try {
+    const response = await fetch("./issues-data.json");
+    if (!response.ok) {
+      throw new Error(`Issue data request failed with status ${response.status}`);
+    }
+
+    const issueData = await response.json();
+    if (!Array.isArray(issueData)) {
+      throw new TypeError("Issue data must be an array");
+    }
+
+    issues = issueData.slice();
+  } catch (error) {
+    console.error("Unable to load issue data.", error);
+    document.getElementById("results-meta").textContent = "Issue data could not be loaded.";
+    document.getElementById("issue-list").textContent = "Refresh the page to try again.";
+    return;
+  }
+
   const state = {
     searchText: "",
     category: "All",
     status: "All",
+    ward: "All",
     selectedIssueId: null,
     activeBounds: null,
     map: null,
@@ -26,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput: document.getElementById("search-input"),
     categoryFilter: document.getElementById("category-filter"),
     statusFilter: document.getElementById("status-filter"),
+    wardFilter: document.getElementById("ward-filter"),
     issueList: document.getElementById("issue-list"),
     resultsMeta: document.getElementById("results-meta"),
     modal: document.getElementById("media-modal"),
@@ -36,6 +58,19 @@ document.addEventListener("DOMContentLoaded", () => {
     modalPosition: document.getElementById("media-modal-position"),
     modalCaption: document.getElementById("media-modal-caption")
   };
+
+  const wardNumbers = [...new Set(
+    issues
+      .map((issue) => issue.ward_number)
+      .filter((wardNumber) => Number.isInteger(wardNumber) && wardNumber >= 0)
+  )].sort((a, b) => a - b);
+
+  wardNumbers.forEach((wardNumber) => {
+    const option = document.createElement("option");
+    option.value = String(wardNumber);
+    option.textContent = `Ward ${wardNumber}`;
+    elements.wardFilter.appendChild(option);
+  });
 
   const map = L.map("map", {
     zoomControl: true,
@@ -156,7 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .includes(searchText);
     const matchesCategory = state.category === "All" || issue.category === state.category;
     const matchesStatus = state.status === "All" || issue.status === state.status;
-    return matchesText && matchesCategory && matchesStatus;
+    const matchesWard = state.ward === "All" || String(issue.ward_number) === state.ward;
+    return matchesText && matchesCategory && matchesStatus && matchesWard;
   }
 
   function renderIssueList() {
@@ -180,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (orderedIssues.length === 0) {
       const emptyState = document.createElement("div");
       emptyState.className = "empty-state";
-      emptyState.textContent = "No issues match the current text, category, and map viewport filters.";
+      emptyState.textContent = "No issues match the current filters and map viewport.";
       elements.issueList.appendChild(emptyState);
       updateMeta(orderedIssues.length);
       return;
@@ -222,7 +258,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const categoryChip = createChip(issue.category);
     const statusChip = createChip(issue.status, getStatusChipClass(issue.status));
-    chips.append(categoryChip, statusChip);
+    chips.appendChild(categoryChip);
+    if (issue.ward_number !== -1) {
+      chips.appendChild(createChip(`Ward ${issue.ward_number}`));
+    }
+    chips.appendChild(statusChip);
 
     titleRow.append(title, chips);
 
@@ -478,6 +518,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   elements.statusFilter.addEventListener("change", (event) => {
     state.status = event.target.value;
+    renderIssueList();
+    syncMarkerStyles();
+  });
+
+  elements.wardFilter.addEventListener("change", (event) => {
+    state.ward = event.target.value;
     renderIssueList();
     syncMarkerStyles();
   });

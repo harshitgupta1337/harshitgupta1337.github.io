@@ -12,11 +12,10 @@
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar" aria-label="Issue list and filters">
-      <div class="sidebar__header">
+    <header class="topbar">
+      <div class="topbar__brand">
         <p class="eyebrow">Civic Issues Tracker</p>
         <h1>Dhanbad neighborhood dashboard</h1>
-        <p class="sidebar__lede">Filter community issues by text, category, and the exact map viewport currently visible on the right.</p>
       </div>
 
       <div class="filters" aria-label="Issue filters">
@@ -46,15 +45,29 @@
           </select>
         </label>
 
-        <div class="filters__meta" id="results-meta" aria-live="polite"></div>
+        <label class="field">
+          <span class="field__label">Ward</span>
+          <select id="ward-filter">
+            <option value="All">All wards</option>
+          </select>
+        </label>
       </div>
+    </header>
 
-      <div class="issue-list" id="issue-list" aria-live="polite"></div>
-    </aside>
+    <div class="workspace">
+      <aside class="sidebar" aria-label="Issues in the current map view">
+        <div class="sidebar__summary">
+          <h2>Issues in view</h2>
+          <div class="filters__meta" id="results-meta" aria-live="polite"></div>
+        </div>
 
-    <main class="map-panel" aria-label="Interactive map">
-      <div id="map" class="map-panel__map"></div>
-    </main>
+        <div class="issue-list" id="issue-list" aria-live="polite"></div>
+      </aside>
+
+      <main class="map-panel" aria-label="Interactive map">
+        <div id="map" class="map-panel__map"></div>
+      </main>
+    </div>
   </div>
 
   <div id="media-modal" class="media-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Media viewer">
@@ -71,7 +84,6 @@
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="issues-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

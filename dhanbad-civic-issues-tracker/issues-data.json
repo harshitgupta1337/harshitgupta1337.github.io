@@ -1,0 +1,200 @@
+[
+  {
+    "id": "1",
+    "title": "Dirty Bar Association",
+    "description": "Bar Association of Dhanbad is not maintaining cleanliness in the area.",
+    "category": "Infrastructure",
+    "latitude": 23.797749,
+    "longitude": 86.43537,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/1/barassociation_pic.png",
+        "alt": "Dirty Bar Association"
+      },
+      {
+        "type": "video",
+        "url": "./assets/1/barassociation_video.mp4",
+        "poster": "./assets/1/barassociation_pic.png"
+      }
+    ],
+    "ward_number": 27
+  },
+  {
+    "id": "2",
+    "title": "Smelly toilet",
+    "description": "Smelly toilet at Vivekananda Chowk.",
+    "category": "Sanitation",
+    "latitude": 23.799116,
+    "longitude": 86.440719,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/2/toilet_1.png",
+        "alt": "Smelly toilet"
+      },
+      {
+        "type": "video",
+        "url": "./assets/2/toilet_1.mp4",
+        "poster": "./assets/2/toilet_1.png"
+      }
+    ],
+    "ward_number": 27
+  },
+  {
+    "id": "3",
+    "title": "Open dumping in Chirkunda",
+    "description": "Open dumping is occurring in Chirkunda, Municipality is not managing waste bin.",
+    "category": "Sanitation",
+    "latitude": 23.7479,
+    "longitude": 86.7869,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/3/chirkunda_garbage_pic.png",
+        "alt": "Open dumping in Chirkunda"
+      },
+      {
+        "type": "video",
+        "url": "./assets/3/chirkunda_garbage_video.mp4",
+        "poster": "./assets/3/chirkunda_garbage_pic.png"
+      }
+    ],
+    "ward_number": -1
+  },
+  {
+    "id": "4",
+    "title": "Waterlogging near pond",
+    "description": "Pond water is getting waterlogged, causing diseases.",
+    "category": "Sanitation",
+    "latitude": 23.776306,
+    "longitude": 86.235694,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/4/bishnupur_village_pic.png",
+        "alt": "Waterlogging near pond"
+      },
+      {
+        "type": "video",
+        "url": "./assets/4/bishnupur_village.mp4",
+        "poster": "./assets/4/bishnupur_village_pic.png"
+      }
+    ],
+    "ward_number": -1
+  },
+  {
+    "id": "5",
+    "title": "Broken school roof.",
+    "description": "The roof of the local school is dangerously damaged and needs repair.",
+    "category": "Infrastructure",
+    "latitude": 23.84768060049324,
+    "longitude": 86.61440567527467,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/5/school_pic.png",
+        "alt": "Broken school roof"
+      },
+      {
+        "type": "video",
+        "url": "./assets/5/school_video.mp4",
+        "poster": "./assets/5/school_pic.png"
+      }
+    ],
+    "ward_number": -1
+  },
+  {
+    "id": "6",
+    "title": "Uncollected waste on roadside.",
+    "description": "Uncollected waste on roadside near Heera Palace.",
+    "category": "Infrastructure",
+    "latitude": 23.799001,
+    "longitude": 86.44139,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/6/heerapalace_1.jpg",
+        "alt": "Uncollected waste on roadside"
+      },
+      {
+        "type": "image",
+        "url": "./assets/6/heerapalace_2.jpg",
+        "alt": "Uncollected waste on roadside"
+      },
+      {
+        "type": "image",
+        "url": "./assets/6/heerapalace_3.jpg",
+        "alt": "Uncollected waste on roadside"
+      },
+      {
+        "type": "image",
+        "url": "./assets/6/heerapalace_4.jpg",
+        "alt": "Uncollected waste on roadside"
+      }
+    ],
+    "ward_number": 27
+  },
+  {
+    "id": "7",
+    "title": "Waterlogging on road",
+    "description": "Waterlogging is occurring on the main road under bridge.",
+    "category": "Drainage",
+    "latitude": 23.81469,
+    "longitude": 86.342811,
+    "status": "Unresolved",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/7/waterlogging_pic.jpg",
+        "alt": "Waterlogging on road"
+      },
+      {
+        "type": "video",
+        "url": "./assets/7/waterlogging_video.mp4",
+        "poster": "./assets/7/waterlogging_pic.jpg"
+      }
+    ],
+    "ward_number": -1
+  },
+  {
+    "id": "8",
+    "title": "Road unclean",
+    "description": "The main road is unclean and needs to be cleaned.",
+    "category": "Infrastructure",
+    "latitude": 23.800116,
+    "longitude": 86.450719,
+    "status": "In Progress",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/8/inprogress.jpg",
+        "alt": "Road unclean"
+      }
+    ],
+    "ward_number": 25
+  },
+  {
+    "id": "9",
+    "title": "Road unclean",
+    "description": "The main road is unclean and needs to be cleaned.",
+    "category": "Infrastructure",
+    "latitude": 23.801116,
+    "longitude": 86.453719,
+    "status": "Completed",
+    "media": [
+      {
+        "type": "image",
+        "url": "./assets/9/completed.jpg",
+        "alt": "Road unclean"
+      }
+    ],
+    "ward_number": 25
+  }
+]
