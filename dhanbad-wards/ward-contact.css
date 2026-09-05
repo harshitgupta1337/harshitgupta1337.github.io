@@ -126,7 +126,45 @@ h2, h3 { margin: 0; }
 .phone-link:hover { background: var(--terracotta-dark); }
 .boundary-note { padding-left: 0.75rem; border-left: 4px solid var(--gold); color: var(--muted); font-size: 0.78rem; }
 
-.common-contacts { margin-top: 2.5rem; }
+.ward-data-helper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  border: 1px solid #9ebfc0;
+  border-left: 5px solid var(--teal);
+  border-radius: 6px;
+  background: rgb(255 253 248 / 88%);
+  box-shadow: 0 10px 26px rgb(30 78 81 / 9%);
+}
+.helper-icon {
+  display: grid;
+  place-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--teal);
+  font: 700 1.4rem/1 "Noto Sans", sans-serif;
+}
+.ward-data-helper h2 { color: var(--teal-dark); font-size: clamp(1.35rem, 4vw, 1.75rem); }
+.ward-data-helper p:not(.eyebrow) { margin: 0.55rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.ward-data-helper a {
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 5px;
+  color: var(--white);
+  background: var(--teal-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+.ward-data-helper a:hover { background: var(--teal); }
+.ward-data-helper a span { font-size: 0.78rem; font-weight: 600; }
+
+.common-contacts { margin-top: 2rem; }
 .section-heading h2 { font-size: 2rem; }
 .section-heading h2 span { display: block; color: var(--muted); font-size: 0.62em; }
 .contact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-top: 1rem; }
@@ -208,7 +246,6 @@ h2, h3 { margin: 0; }
 .portal-card-mhd .portal-actions a:hover { background: var(--terracotta-dark); }
 footer { margin-top: 1.5rem; text-align: center; }
 footer a { color: var(--teal-dark); font-size: 0.85rem; font-weight: 700; }
-
 @keyframes reveal { from { opacity: 0; transform: translateY(10px); } }
 
 @media (max-width: 620px) {
@@ -219,6 +256,7 @@ footer a { color: var(--teal-dark); font-size: 0.85rem; font-weight: 700; }
   .ward-number { width: 130px; margin-inline: auto; }
   .ward-number strong { font-size: 4rem; }
   .phone-actions { justify-content: center; }
+  .ward-data-helper { grid-template-columns: 1fr; }
   .contact-list, .mission-callout, .portal-card { grid-template-columns: 1fr; }
   .mission-callout > a { min-width: 0; }
   .portal-actions { justify-content: stretch; }

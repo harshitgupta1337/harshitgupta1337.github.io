@@ -28,6 +28,7 @@ const elements = {
   councillorNameEn: document.querySelector("#councillor-name-en"),
   phoneActions: document.querySelector("#phone-actions"),
   boundaryNote: document.querySelector("#boundary-note"),
+  wardDataHelper: document.querySelector("#ward-data-helper"),
   commonContactList: document.querySelector("#common-contact-list"),
 };
 
@@ -82,6 +83,7 @@ function showCouncillor(feature) {
 
   elements.councillorCard.hidden = false;
   elements.boundaryNote.hidden = false;
+  elements.wardDataHelper.hidden = !phones.length;
   setStatus(
     `${ward.ward_name} मिला / ${ward.ward_name} found`,
     "नीचे आपके पार्षद की संपर्क जानकारी है। / Your councillor's contact information is below.",
@@ -120,6 +122,7 @@ function handlePositionError(error) {
 function requestLocation() {
   elements.councillorCard.hidden = true;
   elements.boundaryNote.hidden = true;
+  elements.wardDataHelper.hidden = true;
   if (!window.isSecureContext) {
     setStatus("HTTPS आवश्यक है / HTTPS required", "GPS के लिए यह पेज HTTPS या localhost पर खोलें। / Open this page over HTTPS or localhost to use GPS.", "error");
     return;
