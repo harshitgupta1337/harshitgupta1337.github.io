@@ -160,6 +160,52 @@ h2, h3 { margin: 0; }
   text-decoration: none;
 }
 .mission-callout > a span { color: #f6c66e; font-size: 0.82rem; }
+
+.grievance-portals {
+  margin-top: 2.5rem;
+  padding: clamp(1.25rem, 5vw, 2rem);
+  border: 1px solid var(--border);
+  border-top: 5px solid var(--terracotta);
+  background: rgb(255 253 248 / 88%);
+  box-shadow: var(--shadow);
+}
+.grievance-heading { max-width: 650px; }
+.grievance-heading h2 { font-size: clamp(1.75rem, 5vw, 2.3rem); }
+.grievance-heading h2 span { display: block; color: var(--muted); font-size: 0.58em; }
+.grievance-heading > p:last-child { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.portal-list { display: grid; gap: 0.8rem; margin-top: 1.25rem; }
+.portal-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  border-left: 4px solid var(--teal);
+  background: var(--paper);
+}
+.portal-card-mhd { border-left-color: var(--terracotta); }
+.portal-owner { margin: 0 0 0.25rem; color: var(--muted); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+.portal-card h3 { font-size: 1.25rem; }
+.portal-card h3 span { display: block; color: var(--muted); font: 600 0.72em/1.3 "Noto Sans", sans-serif; }
+.portal-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
+.portal-actions a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid var(--teal-dark);
+  border-radius: 5px;
+  color: var(--teal-dark);
+  background: var(--white);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.portal-actions a:hover { color: var(--white); background: var(--teal-dark); }
+.portal-card-mhd .portal-actions a { border-color: var(--terracotta); color: var(--white); background: var(--terracotta); }
+.portal-card-mhd .portal-actions a:hover { background: var(--terracotta-dark); }
 footer { margin-top: 1.5rem; text-align: center; }
 footer a { color: var(--teal-dark); font-size: 0.85rem; font-weight: 700; }
 
@@ -173,8 +219,10 @@ footer a { color: var(--teal-dark); font-size: 0.85rem; font-weight: 700; }
   .ward-number { width: 130px; margin-inline: auto; }
   .ward-number strong { font-size: 4rem; }
   .phone-actions { justify-content: center; }
-  .contact-list, .mission-callout { grid-template-columns: 1fr; }
+  .contact-list, .mission-callout, .portal-card { grid-template-columns: 1fr; }
   .mission-callout > a { min-width: 0; }
+  .portal-actions { justify-content: stretch; }
+  .portal-actions a { flex: 1 1 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
