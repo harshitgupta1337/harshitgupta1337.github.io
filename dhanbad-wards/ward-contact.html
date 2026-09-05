@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F1E5">
+  <meta name="description" content="Use your location to find and contact your Dhanbad ward councillor.">
+  <title>Your Ward Contact | Mai Hoon Dhanbad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ward-contact.css">
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.2.0/turf.min.js" defer></script>
+  <script src="ward-contact.js" defer></script>
+</head>
+<body>
+  <main class="contact-shell">
+    <header class="contact-header">
+      <p class="organization">मैं हूँ धनबाद <span aria-hidden="true">·</span> Mai Hoon Dhanbad</p>
+      <h1>आपके वार्ड के पार्षद <span>Your Ward Councillor</span></h1>
+      <p>आपके GPS स्थान से पार्षद की जानकारी अपने आप खोजी जा रही है।<br>We are using your location to find your councillor automatically.</p>
+    </header>
+
+    <section class="location-status" id="location-status" data-state="loading" role="status" aria-live="polite">
+      <span class="status-icon" aria-hidden="true">⌖</span>
+      <div>
+        <strong id="status-title">आपका स्थान खोज रहे हैं / Finding your location</strong>
+        <p id="status-message">ब्राउज़र में GPS की अनुमति दें। / Please allow location access in your browser.</p>
+      </div>
+      <button id="retry-button" type="button" hidden>फिर कोशिश करें / Retry</button>
+    </section>
+
+    <p class="privacy-note">आपका स्थान केवल इस डिवाइस पर वार्ड खोजने के लिए उपयोग होता है। Location is used only on this device to find your ward.</p>
+
+    <section class="councillor-card" id="councillor-card" aria-labelledby="ward-heading" hidden>
+      <div class="ward-number">
+        <span>वार्ड / WARD</span>
+        <strong id="ward-number"></strong>
+      </div>
+      <div class="councillor-details">
+        <p class="result-label">आपके पार्षद / Your councillor</p>
+        <h2 id="ward-heading"></h2>
+        <p class="councillor-name" id="councillor-name"></p>
+        <p class="councillor-name-en" id="councillor-name-en" hidden></p>
+        <div class="phone-actions" id="phone-actions"></div>
+      </div>
+    </section>
+
+    <p class="boundary-note" id="boundary-note" hidden><strong>ध्यान दें / Note:</strong> वार्ड सीमाएँ 2022 डेटा पर आधारित हैं; 2026 पुनर्गठन के बाद परिणाम बदल सकता है। / Boundaries use 2022 data and may differ after the 2026 reorganization.</p>
+
+    <section class="common-contacts" aria-labelledby="common-heading">
+      <div class="section-heading">
+        <p class="eyebrow">नगर संपर्क / City contacts</p>
+        <h2 id="common-heading">सामान्य संपर्क <span>Common contacts</span></h2>
+      </div>
+      <div class="contact-list" id="common-contact-list"></div>
+    </section>
+
+    <aside class="mission-callout">
+      <div>
+        <p class="eyebrow">एक बेहतर शहर, हम सबकी जिम्मेदारी</p>
+        <h2>धनबाद को बेहतर बनाने के मिशन में हमारे साथ जुड़ें</h2>
+        <p>Join us in the mission of improving Dhanbad.</p>
+      </div>
+      <a id="mission-link" href="https://maihoondhanbad.org" target="_blank" rel="noopener noreferrer">Mai Hoon Dhanbad पर जुड़ें <span>Join us ↗</span></a>
+    </aside>
+
+    <footer><a href="https://maihoondhanbad.org/know-your-ward">वार्ड मानचित्र और मैन्युअल खोज / Open ward map and manual search</a></footer>
+  </main>
+</body>
+</html>

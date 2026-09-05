@@ -70,6 +70,14 @@ Use `--latitude-column`, `--longitude-column`, or `--ground-truth-column` when t
 
 The output retains every input column and adds `calculated_ward_no`, `matched_geojson_wards`, `comparison_status`, and `is_incorrect`. Status is one of `match`, `mismatch`, `outside_all_wards`, `ambiguous_boundary`, or `invalid_input`. Filter `is_incorrect` to `True` to review all records that need attention. `ambiguous_boundary` means the GPS point lies on an edge covered by more than one ward.
 
+## GPS-first councillor contact page
+
+`ward-contact.html` is a simplified, mobile-focused alternative that requests the visitor's GPS location as soon as ward data loads. When the point matches a boundary, it immediately displays the ward number, councillor name, and tap-to-call phone link. Visitors who deny location access or fall outside the available boundaries can follow the page's link to the full manual ward finder.
+
+Serve the repository as described below, then open `http://localhost:8000/ward-contact.html`. GPS requires HTTPS in production. When embedding this page in another site, the iframe must include `allow="geolocation"`.
+
+Common city contacts are configured in `COMMON_CONTACTS` near the top of `ward-contact.js`. The Mayor entry intentionally remains marked as pending until a name and public phone number are checked against an official source. The Mai Hoon Dhanbad mission link points to `https://maihoondhanbad.org`.
+
 ## Run locally
 
 The page fetches `wards.geojson`, so opening `index.html` through a `file://` URL will not work in most browsers. Serve the directory over HTTP:
@@ -95,7 +103,7 @@ Leaflet, Turf.js, Google Fonts, and OpenStreetMap tiles load from the internet. 
 
 Drag this repository directory into Netlify Drop, or connect the Git repository. Set the publish directory to the repository root. Leave the build command empty.
 
-Do not deploy the large `dataset/`, master-plan images, PDFs, or Python virtual environment with the public site. A clean deployment needs only the four web files above; `README.md` may also be published.
+Do not deploy the large `dataset/`, master-plan images, PDFs, or Python virtual environment with the public site. A deployment containing both finders needs `index.html`, `style.css`, `script.js`, `ward-contact.html`, `ward-contact.css`, `ward-contact.js`, and `wards.geojson`; `README.md` may also be published.
 
 ## Embed on the GoDaddy site
 

@@ -1,0 +1,182 @@
+:root {
+  --paper: #f7f1e5;
+  --paper-deep: #eadbc3;
+  --white: #fffdf8;
+  --ink: #292018;
+  --muted: #695b4e;
+  --terracotta: #b63e12;
+  --terracotta-dark: #852d0d;
+  --teal: #276c70;
+  --teal-dark: #164e52;
+  --gold: #dfa13b;
+  --border: #d4c2aa;
+  --shadow: 0 16px 40px rgb(55 37 21 / 13%);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html {
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Noto Sans", "Noto Sans Devanagari", sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  min-width: 280px;
+  margin: 0;
+  background:
+    linear-gradient(135deg, rgb(223 161 59 / 13%), transparent 36%),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgb(39 108 112 / 4%) 40px),
+    var(--paper);
+}
+
+a, button { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+.contact-shell {
+  width: min(100% - 2rem, 820px);
+  margin-inline: auto;
+  padding: 2rem 0 3rem;
+}
+
+.contact-header { max-width: 690px; }
+.organization, .eyebrow, .result-label {
+  margin: 0 0 0.35rem;
+  color: var(--terracotta);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 { font-family: "Baloo 2", "Noto Sans Devanagari", sans-serif; letter-spacing: 0; line-height: 1.08; }
+h1 { margin: 0; color: var(--terracotta); font-size: clamp(2.6rem, 9vw, 4.9rem); }
+h1 span { display: block; color: var(--ink); font-size: 0.48em; }
+h2, h3 { margin: 0; }
+.contact-header > p:last-child { margin: 1rem 0 0; color: var(--muted); }
+
+.location-status {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.7rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--gold);
+  background: rgb(255 253 248 / 88%);
+}
+.location-status[data-state="success"] { border-left-color: var(--teal); }
+.location-status[data-state="error"] { border-left-color: var(--terracotta); }
+.status-icon { color: var(--teal-dark); font-size: 2rem; line-height: 1; }
+.location-status p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.location-status button {
+  border: 0;
+  color: var(--terracotta);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.privacy-note { margin: 0.55rem 0 0; color: var(--muted); font-size: 0.76rem; }
+
+.councillor-card {
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.7rem;
+  padding: clamp(1.25rem, 5vw, 2rem);
+  border: 2px solid var(--teal);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  animation: reveal 350ms ease-out both;
+}
+.ward-number {
+  display: grid;
+  place-content: center;
+  width: 155px;
+  aspect-ratio: 1;
+  border: 4px solid var(--teal);
+  border-radius: 50%;
+  color: var(--teal-dark);
+  background: var(--paper);
+  text-align: center;
+}
+.ward-number span { font-size: 0.72rem; font-weight: 700; }
+.ward-number strong { font: 700 4.8rem/0.9 "Baloo 2", sans-serif; }
+.councillor-details h2 { color: var(--teal-dark); font-size: 2rem; }
+.councillor-name { margin: 0.75rem 0 0; font-size: clamp(1.35rem, 4vw, 1.8rem); font-weight: 700; }
+.councillor-name-en { margin: 0.1rem 0 0; color: var(--muted); font-weight: 600; }
+.phone-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+.phone-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 0.65rem 0.9rem;
+  border-radius: 5px;
+  color: var(--white);
+  background: var(--terracotta);
+  font-weight: 700;
+  text-decoration: none;
+}
+.phone-link:hover { background: var(--terracotta-dark); }
+.boundary-note { padding-left: 0.75rem; border-left: 4px solid var(--gold); color: var(--muted); font-size: 0.78rem; }
+
+.common-contacts { margin-top: 2.5rem; }
+.section-heading h2 { font-size: 2rem; }
+.section-heading h2 span { display: block; color: var(--muted); font-size: 0.62em; }
+.contact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-top: 1rem; }
+.contact-list article { padding: 1rem; border-top: 4px solid var(--teal); background: rgb(255 253 248 / 80%); }
+.contact-list h3 { font-size: 1.15rem; }
+.contact-list p { min-height: 3em; margin: 0.45rem 0 0.8rem; color: var(--muted); font-size: 0.86rem; }
+.contact-list .phone-link { min-height: 42px; background: var(--teal-dark); font-size: 0.86rem; }
+
+.mission-callout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding: clamp(1.25rem, 5vw, 2rem);
+  color: var(--white);
+  background: var(--teal-dark);
+}
+.mission-callout .eyebrow { color: #f6c66e; }
+.mission-callout h2 { max-width: 510px; font-size: clamp(1.55rem, 5vw, 2.2rem); }
+.mission-callout p:last-child { margin: 0.5rem 0 0; color: #d3e7e5; }
+.mission-callout > a {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 165px;
+  padding: 0.8rem 1rem;
+  border: 2px solid #f6c66e;
+  border-radius: 5px;
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+}
+.mission-callout > a span { color: #f6c66e; font-size: 0.82rem; }
+footer { margin-top: 1.5rem; text-align: center; }
+footer a { color: var(--teal-dark); font-size: 0.85rem; font-weight: 700; }
+
+@keyframes reveal { from { opacity: 0; transform: translateY(10px); } }
+
+@media (max-width: 620px) {
+  .contact-shell { width: min(100% - 1.25rem, 820px); padding-top: 1.2rem; }
+  .location-status { grid-template-columns: auto 1fr; }
+  .location-status button { grid-column: 2; justify-self: start; padding: 0; }
+  .councillor-card { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
+  .ward-number { width: 130px; margin-inline: auto; }
+  .ward-number strong { font-size: 4rem; }
+  .phone-actions { justify-content: center; }
+  .contact-list, .mission-callout { grid-template-columns: 1fr; }
+  .mission-callout > a { min-width: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; }
+}
