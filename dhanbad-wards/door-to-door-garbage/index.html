@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e6">
+  <meta name="description" content="Crowd-sourced ward-wise status of door-to-door garbage collection in Dhanbad Municipal Corporation.">
+  <title>Dhanbad Garbage Collection Ward Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Noto+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Dhanbad Municipal Corporation</p>
+        <h2 id="page-title">Door-to-door garbage collection</h2>
+        <p class="lede">A ward-wise view built from crowd-sourced reports, showing where collection is regular, irregular, or absent.</p>
+      </div>
+      <dl class="survey-date">
+        <dt>Survey snapshot</dt>
+        <dd id="survey-date">Loading...</dd>
+      </dl>
+    </section>
+
+    <section class="map-section" aria-labelledby="map-title">
+      <div class="map-heading">
+        <div>
+          <p class="eyebrow">Current picture</p>
+          <h2 id="map-title">Collection status by ward</h2>
+        </div>
+        <a class="download-link" id="map-download" href="ward-garbage-collection.png" download>Download map</a>
+      </div>
+      <figure>
+        <a id="map-link" href="ward-garbage-collection.png" aria-label="Open full-resolution ward map">
+          <img id="ward-map" src="ward-garbage-collection.png" alt="Map of all Dhanbad wards colored red for no garbage collection, yellow for irregular collection, blue for regular collection, and gray where no survey data is available.">
+        </a>
+        <figcaption>Ward numbers are shown in bold. Gray wards have not yet received a survey response.</figcaption>
+      </figure>
+    </section>
+
+    <section class="snapshot" aria-labelledby="snapshot-title">
+      <div class="section-copy">
+        <p class="eyebrow">At a glance</p>
+        <h2 id="snapshot-title">Report card of 55 wards</h2>
+        <p>These totals describe wards with at least one response, not the full city. More responses will make the ward-level picture stronger.</p>
+      </div>
+      <div class="status-grid">
+        <article class="status status-none">
+          <span aria-hidden="true"></span>
+          <strong id="status-none-count">--</strong>
+          <p>No collection</p>
+        </article>
+        <article class="status status-irregular">
+          <span aria-hidden="true"></span>
+          <strong id="status-irregular-count">--</strong>
+          <p>Irregular collection</p>
+        </article>
+        <article class="status status-regular">
+          <span aria-hidden="true"></span>
+          <strong id="status-regular-count">--</strong>
+          <p>Regular collection</p>
+        </article>
+        <article class="status status-missing">
+          <span aria-hidden="true"></span>
+          <strong id="status-missing-count">--</strong>
+          <p>No data</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="report-ward" aria-labelledby="report-ward-title">
+      <div>
+        <p class="eyebrow">Help complete the map</p>
+        <h2 id="report-ward-title">Is your ward missing?</h2>
+        <p>Share the status of door-to-door garbage collection in your ward. Or help us correct your ward's data.</p>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScXBEcSLllfoe18CY9oNff5m-gI4uSEkIGA6nF9bR9UobyjfA/viewform" target="_blank" rel="noopener noreferrer">Report it now</a>
+    </section>
+
+    <section class="report-ward contact-councillor" aria-labelledby="contact-councillor-title">
+      <div>
+        <p class="eyebrow">Make your voice heard</p>
+        <h2 id="contact-councillor-title">Demand the basic services for living with dignity</h2>
+        <p>Find and contact your ward councillor through the Mai Hoon Dhanbad Know Your Ward tool.</p>
+      </div>
+      <a href="https://maihoondhanbad.org/know-your-ward" target="_blank" rel="noopener noreferrer">Contact your councillor</a>
+    </section>
+
+    <section class="method" aria-labelledby="method-title">
+      <div>
+        <p class="eyebrow">How it is calculated</p>
+        <h2 id="method-title">One final status per ward</h2>
+      </div>
+      <p>Each row is one crowd-sourced report. For wards with multiple reports, the most frequently reported status is used. If two or more statuses receive the same number of reports, the higher status is selected.</p>
+      <dl class="coverage">
+        <div>
+          <dt>Responses</dt>
+          <dd id="response-count">--</dd>
+        </div>
+        <div>
+          <dt>Wards covered</dt>
+          <dd id="ward-coverage">--</dd>
+        </div>
+      </dl>
+    </section>
+    <p class="data-status" id="data-status" role="status" aria-live="polite">Loading current survey statistics...</p>
+  </main>
+
+  <footer>
+    <p>Source: crowd-sourced resident responses.</p>
+  </footer>
+</body>
+</html>
