@@ -2,6 +2,42 @@
 
 This directory contains the crowd-sourced ward map and its static webpage.
 
+## Download the Google Sheet
+
+Share the sheet with the service account email address, then run:
+
+```bash
+./venv/bin/python door-to-door-garbage/fetch_google_sheet.py \
+  SHEET_ID path/to/service-account-key.json
+```
+
+The first worksheet is saved as `latest-google-form-responses.csv` in this directory.
+
+## Populate the derived columns
+
+Fill missing `Ward Number` and `Collection Status` values in place:
+
+```bash
+./venv/bin/python door-to-door-garbage/populate_google_form_responses.py \
+  door-to-door-garbage/latest-google-form-responses.csv
+```
+
+Collection statuses are derived from `collection-status-mapping.json`.
+
+## Run with GitHub Actions
+
+The `Update garbage collection map` workflow runs daily at 00:15 UTC and can
+also be started manually from the repository's **Actions** tab.
+
+Configure these under **Settings > Secrets and variables > Actions**:
+
+- Variable `GOOGLE_SHEET_ID`: the Google Sheet ID.
+- Secret `GOOGLE_SERVICE_ACCOUNT_KEY_JSON`: the complete contents of the
+  service-account key JSON file.
+
+The workflow downloads the sheet, populates the derived columns, regenerates
+the map and statistics, and commits changed generated files to the repository.
+
 ## Regenerate the map and statistics
 
 From the repository root, pass the latest Google Forms responses CSV to the plotter:

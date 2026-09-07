@@ -1,0 +1,51 @@
+name: Update garbage collection map
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 0 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: dhanbad-wards/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        working-directory: dhanbad-wards
+
+      - name: Download and process responses
+        env:
+          GOOGLE_SHEET_ID: ${{ vars.DOOR_TO_DOOR_GARBAGE_FORM_RESPONSES }}
+          GOOGLE_SERVICE_ACCOUNT_KEY_JSON: ${{ secrets.GCP_SA_KEY }}
+        working-directory: dhanbad-wards
+        run: |
+          printf '%s' "$GOOGLE_SERVICE_ACCOUNT_KEY_JSON" > "$RUNNER_TEMP/service-account.json"
+          python door-to-door-garbage/fetch_google_sheet.py \
+            "$GOOGLE_SHEET_ID" "$RUNNER_TEMP/service-account.json"
+          python door-to-door-garbage/populate_google_form_responses.py \
+            door-to-door-garbage/latest-google-form-responses.csv
+          python door-to-door-garbage/plot_ward_garbage_collection.py \
+            door-to-door-garbage/latest-google-form-responses.csv
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            dhanbad-wards/door-to-door-garbage/latest-google-form-responses.csv \
+            dhanbad-wards/door-to-door-garbage/ward-garbage-collection.png \
+            dhanbad-wards/door-to-door-garbage/ward-garbage-collection-stats.json
+          git diff --cached --quiet || git commit -m "Update garbage collection map"
+          git push
