@@ -23,14 +23,17 @@ function requireNumber(stats, key) {
   return stats[key];
 }
 
-function displayDate(isoDate) {
-  const date = new Date(`${isoDate}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) throw new Error("Invalid survey snapshot date");
+function displayDateTime(isoDateTime) {
+  const date = new Date(isoDateTime);
+  if (Number.isNaN(date.getTime())) throw new Error("Invalid update timestamp");
   return new Intl.DateTimeFormat("en-IN", {
     day: "2-digit",
     month: "long",
     year: "numeric",
-    timeZone: "UTC",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Asia/Kolkata",
+    timeZoneName: "short",
   }).format(date);
 }
 
@@ -48,7 +51,7 @@ function showStats(stats) {
     throw new Error("Invalid generated map file name");
   }
 
-  elements.surveyDate.textContent = displayDate(stats.survey_snapshot);
+  elements.surveyDate.textContent = displayDateTime(stats.generated_at);
   elements.noCollectionCount.textContent = statusCounts["0"];
   elements.irregularCount.textContent = statusCounts["1"];
   elements.regularCount.textContent = statusCounts["2"];

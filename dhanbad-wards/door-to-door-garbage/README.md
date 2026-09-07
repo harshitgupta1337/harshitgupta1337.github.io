@@ -26,8 +26,8 @@ Collection statuses are derived from `collection-status-mapping.json`.
 
 ## Run with GitHub Actions
 
-The `Update garbage collection map` workflow runs daily at 00:15 UTC and can
-also be started manually from the repository's **Actions** tab.
+The `Update garbage collection map` workflow runs hourly at 15 minutes past the
+hour and can also be started manually from the repository's **Actions** tab.
 
 Configure these under **Settings > Secrets and variables > Actions**:
 

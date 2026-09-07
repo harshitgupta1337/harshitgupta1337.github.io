@@ -2,8 +2,9 @@
 
 import argparse
 import json
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import contextily as cx
 import geopandas as gpd
@@ -24,6 +25,7 @@ STATUS_COLORS = {
     2: "#2878B5",
 }
 NO_DATA_COLOR = "#C8C8C8"
+INDIA_TIME_ZONE = ZoneInfo("Asia/Kolkata")
 
 
 def calculate_final_statuses(responses):
@@ -67,7 +69,7 @@ def write_stats(responses, wards, final_statuses, survey_file):
 
     status_counts = final_statuses.value_counts().reindex(STATUS_COLORS, fill_value=0)
     stats = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": datetime.now(INDIA_TIME_ZONE).isoformat(),
         "survey_snapshot": timestamps.max().date().isoformat(),
         "source_csv": survey_file.name,
         "map_file": OUTPUT_FILE.name,
