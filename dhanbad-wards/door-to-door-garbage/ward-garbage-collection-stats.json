@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-12T10:07:20.947360+05:30",
-  "survey_snapshot": "2026-09-08",
+  "generated_at": "2026-09-12T14:46:34.331390+05:30",
+  "survey_snapshot": "2026-09-12",
   "source_csv": "latest-google-form-responses.csv",
   "map_file": "ward-garbage-collection.png",
-  "response_count": 22,
+  "response_count": 23,
   "wards_covered": 17,
   "total_wards": 55,
   "status_ward_counts": {
