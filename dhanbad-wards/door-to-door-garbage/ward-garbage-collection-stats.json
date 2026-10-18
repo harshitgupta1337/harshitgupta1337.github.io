@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-18T09:55:07.914418+05:30",
-  "survey_snapshot": "2026-10-11",
+  "generated_at": "2026-10-18T15:02:06.964065+05:30",
+  "survey_snapshot": "2026-10-18",
   "source_csv": "latest-google-form-responses.csv",
   "map_file": "ward-garbage-collection.png",
-  "response_count": 25,
-  "wards_covered": 18,
+  "response_count": 26,
+  "wards_covered": 19,
   "total_wards": 55,
   "status_ward_counts": {
     "0": 2,
-    "1": 7,
+    "1": 8,
     "2": 9
   },
-  "no_data_ward_count": 37,
+  "no_data_ward_count": 36,
   "final_status_by_ward": {
     "2": 1,
     "9": 2,
@@ -29,6 +29,7 @@
     "32": 1,
     "33": 2,
     "36": 1,
+    "37": 1,
     "41": 1,
     "55": 2
   }
