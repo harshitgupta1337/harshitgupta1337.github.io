@@ -1,0 +1,948 @@
+[
+  {
+    "id": "sample-001",
+    "name": "Birchwood Yoga Studio",
+    "services": [
+      "yoga",
+      "pilates"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Small-group prenatal and mom-and-baby classes in a quiet studio.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "RPYT prenatal yoga teachers",
+    "phone": "(617) 555-0111",
+    "website": "https://example.com/birchwood-yoga-studio",
+    "lastVerified": "2026-11-02",
+    "sample": true,
+    "lat": 42.3698,
+    "lng": -71.1776,
+    "area": "Watertown, MA"
+  },
+  {
+    "id": "sample-002",
+    "name": "Charles Bend Pilates",
+    "services": [
+      "pilates"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Reformer and mat pilates for pregnancy and gentle return to core work.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$$",
+    "credentials": "",
+    "phone": "(617) 555-0112",
+    "website": "https://example.com/charles-bend-pilates",
+    "lastVerified": "2026-11-03",
+    "sample": true,
+    "lat": 42.3769,
+    "lng": -71.1071,
+    "area": "Cambridge, MA"
+  },
+  {
+    "id": "sample-003",
+    "name": "Little Lantern Fitness",
+    "services": [
+      "fitness"
+    ],
+    "modes": [
+      "in_person",
+      "virtual"
+    ],
+    "blurb": "Strength and stamina coaching; babies welcome at stroller sessions.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0113",
+    "website": "https://example.com/little-lantern-fitness",
+    "lastVerified": "2026-11-04",
+    "sample": true,
+    "lat": 42.3832,
+    "lng": -71.0995,
+    "area": "Somerville, MA",
+    "virtual": {
+      "states": [
+        "MA",
+        "NH",
+        "RI",
+        "CT",
+        "VT",
+        "ME"
+      ]
+    }
+  },
+  {
+    "id": "sample-004",
+    "name": "Moving Mamas Stroller Fitness",
+    "services": [
+      "fitness"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Outdoor stroller-based workouts, all fitness levels.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$",
+    "credentials": "",
+    "phone": "(617) 555-0114",
+    "website": "https://example.com/moving-mamas-stroller-fitness",
+    "lastVerified": "2026-11-05",
+    "sample": true,
+    "lat": 42.4154,
+    "lng": -71.1591,
+    "area": "Arlington, MA"
+  },
+  {
+    "id": "sample-005",
+    "name": "Harbor Pelvic Health PT",
+    "services": [
+      "pelvic_floor",
+      "physio_chiro"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Pelvic floor, diastasis and C-section scar rehab with one-on-one sessions.",
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "DPT, PRPC",
+    "phone": "(617) 555-0115",
+    "website": "https://example.com/harbor-pelvic-health-pt",
+    "lastVerified": "2026-11-06",
+    "sample": true,
+    "lat": 42.3362,
+    "lng": -71.1264,
+    "area": "Brookline, MA"
+  },
+  {
+    "id": "sample-006",
+    "name": "Mend & Move Rehab",
+    "services": [
+      "pelvic_floor"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Postpartum recovery specialists; evening and Saturday appointments.",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "DPT",
+    "phone": "(617) 555-0116",
+    "website": "https://example.com/mend-move-rehab",
+    "lastVerified": "2026-03-10",
+    "sample": true,
+    "lat": 42.3506,
+    "lng": -71.1272,
+    "area": "Allston, Boston, MA"
+  },
+  {
+    "id": "sample-007",
+    "name": "Backbay Physical Therapy",
+    "services": [
+      "physio_chiro"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Back, hip and pelvic pain care during pregnancy and after birth.",
+    "languages": [
+      "English"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "DPT",
+    "phone": "(617) 555-0117",
+    "website": "https://example.com/backbay-physical-therapy",
+    "lastVerified": "2026-11-08",
+    "sample": true,
+    "lat": 42.3514,
+    "lng": -71.0771,
+    "area": "Back Bay, Boston, MA"
+  },
+  {
+    "id": "sample-008",
+    "name": "Spine & Sprout Chiropractic",
+    "services": [
+      "physio_chiro"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Pregnancy-focused chiropractic care and gentle adjustments.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "DC, Webster-certified",
+    "phone": "(617) 555-0118",
+    "website": "https://example.com/spine-sprout-chiropractic",
+    "lastVerified": "2026-11-09",
+    "sample": true,
+    "lat": 42.525,
+    "lng": -70.8954,
+    "area": "Salem, MA"
+  },
+  {
+    "id": "sample-009",
+    "name": "Common Ground Childbirth Classes",
+    "services": [
+      "childbirth_ed"
+    ],
+    "modes": [
+      "in_person",
+      "virtual"
+    ],
+    "blurb": "Evidence-based birth prep, newborn care and partner classes.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "Sliding scale",
+    "credentials": "Certified childbirth educator",
+    "phone": "(617) 555-0119",
+    "website": "https://example.com/common-ground-childbirth-classes",
+    "lastVerified": "2026-11-01",
+    "sample": true,
+    "lat": 42.4132,
+    "lng": -71.1578,
+    "area": "Arlington, MA",
+    "virtual": {
+      "states": [
+        "MA"
+      ]
+    }
+  },
+  {
+    "id": "sample-010",
+    "name": "Stonebridge Birth Education",
+    "services": [
+      "childbirth_ed"
+    ],
+    "modes": [
+      "virtual"
+    ],
+    "blurb": "Self-paced and live online birth preparation courses.",
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "insurance": false,
+    "cost": "$",
+    "credentials": "",
+    "phone": "(617) 555-0120",
+    "website": "https://example.com/stonebridge-birth-education",
+    "lastVerified": "2026-11-02",
+    "sample": true,
+    "virtual": {}
+  },
+  {
+    "id": "sample-011",
+    "name": "Evergreen Doulas",
+    "services": [
+      "doula"
+    ],
+    "modes": [
+      "home_visit"
+    ],
+    "blurb": "Birth and postpartum doulas who come to your home or hospital.",
+    "languages": [
+      "English",
+      "Mandarin"
+    ],
+    "insurance": false,
+    "cost": "$$$",
+    "credentials": "Certified birth doulas",
+    "phone": "(617) 555-0121",
+    "website": "https://example.com/evergreen-doulas",
+    "lastVerified": "2026-11-03",
+    "sample": true,
+    "lat": 42.3315,
+    "lng": -71.2157,
+    "area": "Newton, MA",
+    "homeVisit": {
+      "radiusMiles": 12
+    }
+  },
+  {
+    "id": "sample-012",
+    "name": "Moonrise Postpartum Doulas",
+    "services": [
+      "doula"
+    ],
+    "modes": [
+      "home_visit"
+    ],
+    "blurb": "Overnight and daytime postpartum support at home.",
+    "languages": [
+      "English",
+      "Spanish",
+      "Portuguese"
+    ],
+    "insurance": false,
+    "cost": "$$$",
+    "credentials": "",
+    "phone": "(617) 555-0122",
+    "website": "https://example.com/moonrise-postpartum-doulas",
+    "lastVerified": "2026-11-04",
+    "sample": true,
+    "lat": 42.3087,
+    "lng": -71.1092,
+    "area": "Jamaica Plain, Boston, MA",
+    "homeVisit": {
+      "radiusMiles": 15
+    }
+  },
+  {
+    "id": "sample-013",
+    "name": "Kindred Birth Collective",
+    "services": [
+      "doula",
+      "childbirth_ed"
+    ],
+    "modes": [
+      "home_visit",
+      "virtual"
+    ],
+    "blurb": "Doula team plus birth classes; community-rate spots available.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "Sliding scale",
+    "credentials": "",
+    "phone": "(617) 555-0123",
+    "website": "https://example.com/kindred-birth-collective",
+    "lastVerified": "2026-11-05",
+    "sample": true,
+    "lat": 42.4217,
+    "lng": -71.1036,
+    "area": "Medford, MA",
+    "homeVisit": {
+      "radiusMiles": 10
+    },
+    "virtual": {
+      "states": [
+        "MA"
+      ]
+    }
+  },
+  {
+    "id": "sample-014",
+    "name": "Nourish Table Nutrition",
+    "services": [
+      "nutrition"
+    ],
+    "modes": [
+      "in_person",
+      "virtual"
+    ],
+    "blurb": "Meal planning for pregnancy, lactation and postpartum recovery.",
+    "languages": [
+      "English"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "RDN, LDN",
+    "phone": "(617) 555-0124",
+    "website": "https://example.com/nourish-table-nutrition",
+    "lastVerified": "2026-11-06",
+    "sample": true,
+    "lat": 42.3721,
+    "lng": -71.2356,
+    "area": "Waltham, MA",
+    "virtual": {
+      "states": [
+        "MA"
+      ]
+    }
+  },
+  {
+    "id": "sample-015",
+    "name": "Sprout Dietitians",
+    "services": [
+      "nutrition"
+    ],
+    "modes": [
+      "virtual"
+    ],
+    "blurb": "Online nutrition coaching for gestational diabetes and feeding.",
+    "languages": [
+      "English"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "RDN",
+    "phone": "(617) 555-0125",
+    "website": "https://example.com/sprout-dietitians",
+    "lastVerified": "2026-11-07",
+    "sample": true,
+    "virtual": {
+      "states": [
+        "MA",
+        "NH",
+        "RI",
+        "CT",
+        "VT",
+        "ME"
+      ]
+    }
+  },
+  {
+    "id": "sample-016",
+    "name": "Willow Perinatal Therapy",
+    "services": [
+      "therapy"
+    ],
+    "modes": [
+      "in_person",
+      "virtual"
+    ],
+    "blurb": "Therapy for perinatal anxiety, depression and birth experiences.",
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "LICSW, PMH-C",
+    "phone": "(617) 555-0126",
+    "website": "https://example.com/willow-perinatal-therapy",
+    "lastVerified": "2026-11-08",
+    "sample": true,
+    "lat": 42.3547,
+    "lng": -71.0862,
+    "area": "Back Bay, Boston, MA",
+    "virtual": {
+      "states": [
+        "MA"
+      ]
+    }
+  },
+  {
+    "id": "sample-017",
+    "name": "Open Door Counseling",
+    "services": [
+      "therapy"
+    ],
+    "modes": [
+      "virtual"
+    ],
+    "blurb": "Telehealth counseling for new parents; evening slots.",
+    "languages": [
+      "English"
+    ],
+    "insurance": true,
+    "cost": "Sliding scale",
+    "credentials": "",
+    "phone": "(617) 555-0127",
+    "website": "https://example.com/open-door-counseling",
+    "lastVerified": "2026-11-09",
+    "sample": true,
+    "virtual": {
+      "states": [
+        "MA"
+      ]
+    }
+  },
+  {
+    "id": "sample-018",
+    "name": "Daybreak Dental Care",
+    "services": [
+      "dentist"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Gentle cleanings and pregnancy-friendly scheduling.",
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0128",
+    "website": "https://example.com/daybreak-dental-care",
+    "lastVerified": "2026-11-01",
+    "sample": true,
+    "lat": 42.2821,
+    "lng": -71.2331,
+    "area": "Needham, MA"
+  },
+  {
+    "id": "sample-019",
+    "name": "Brightline Family Dentistry",
+    "services": [
+      "dentist"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Family dentist with early-morning and weekend hours.",
+    "languages": [
+      "English",
+      "Vietnamese"
+    ],
+    "insurance": true,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0129",
+    "website": "https://example.com/brightline-family-dentistry",
+    "lastVerified": "2026-11-02",
+    "sample": true,
+    "lat": 42.2584,
+    "lng": -71.001,
+    "area": "Quincy, MA"
+  },
+  {
+    "id": "sample-020",
+    "name": "Benefit Bridge Advisors",
+    "services": [
+      "insurance"
+    ],
+    "modes": [
+      "virtual"
+    ],
+    "blurb": "Help with health plans, parental leave pay and dependent enrollment.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "Free consult",
+    "credentials": "",
+    "phone": "(617) 555-0130",
+    "website": "https://example.com/benefit-bridge-advisors",
+    "lastVerified": "2026-11-03",
+    "sample": true,
+    "virtual": {
+      "states": [
+        "MA",
+        "NH",
+        "RI",
+        "CT",
+        "VT",
+        "ME"
+      ]
+    }
+  },
+  {
+    "id": "sample-021",
+    "name": "Cedar Hollow Daycare",
+    "services": [
+      "childcare"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Infant and toddler rooms; small ratios.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$$",
+    "credentials": "",
+    "phone": "(617) 555-0131",
+    "website": "https://example.com/cedar-hollow-daycare",
+    "lastVerified": "2026-11-04",
+    "sample": true,
+    "lat": 42.3981,
+    "lng": -71.1815,
+    "area": "Belmont, MA"
+  },
+  {
+    "id": "sample-022",
+    "name": "Tiny Steps Early Learning",
+    "services": [
+      "childcare"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Full-day care from 8 weeks; subsidy vouchers accepted.",
+    "languages": [
+      "English",
+      "Haitian Creole"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0132",
+    "website": "https://example.com/tiny-steps-early-learning",
+    "lastVerified": "2026-11-05",
+    "sample": true,
+    "lat": 42.2961,
+    "lng": -71.0741,
+    "area": "Dorchester, Boston, MA"
+  },
+  {
+    "id": "sample-023",
+    "name": "Sunnybrook Family Childcare",
+    "services": [
+      "childcare"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Home-based family childcare with a small group.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0133",
+    "website": "https://example.com/sunnybrook-family-childcare",
+    "lastVerified": "2026-11-06",
+    "sample": true,
+    "lat": 42.4573,
+    "lng": -71.061,
+    "area": "Melrose, MA"
+  },
+  {
+    "id": "sample-024",
+    "name": "Latch & Learn Lactation",
+    "services": [
+      "lactation"
+    ],
+    "modes": [
+      "home_visit",
+      "virtual"
+    ],
+    "blurb": "Home visits and video consults for latch, supply and pumping.",
+    "languages": [
+      "English"
+    ],
+    "insurance": true,
+    "cost": "",
+    "credentials": "IBCLC",
+    "phone": "(617) 555-0134",
+    "website": "https://example.com/latch-learn-lactation",
+    "lastVerified": "2026-11-07",
+    "sample": true,
+    "lat": 42.3769,
+    "lng": -71.1071,
+    "area": "Cambridge, MA",
+    "homeVisit": {
+      "radiusMiles": 10
+    },
+    "virtual": {
+      "states": [
+        "MA",
+        "NH",
+        "RI",
+        "CT",
+        "VT",
+        "ME"
+      ]
+    }
+  },
+  {
+    "id": "sample-025",
+    "name": "Milk & Honey Support",
+    "services": [
+      "lactation"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Clinic visits, weigh-ins and weekly feeding drop-ins.",
+    "languages": [
+      "English",
+      "Portuguese"
+    ],
+    "insurance": true,
+    "cost": "",
+    "credentials": "IBCLC",
+    "phone": "(617) 555-0135",
+    "website": "https://example.com/milk-honey-support",
+    "lastVerified": "2026-11-08",
+    "sample": true,
+    "lat": 42.2749,
+    "lng": -71.4162,
+    "area": "Framingham, MA"
+  },
+  {
+    "id": "sample-026",
+    "name": "Gentle Hands Massage",
+    "services": [
+      "massage"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Prenatal and postpartum massage with side-lying support.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "Licensed massage therapist, prenatal certified",
+    "phone": "(617) 555-0136",
+    "website": "https://example.com/gentle-hands-massage",
+    "lastVerified": "2026-11-09",
+    "sample": true,
+    "lat": 42.3765,
+    "lng": -71.2382,
+    "area": "Waltham, MA"
+  },
+  {
+    "id": "sample-027",
+    "name": "Restore Bodywork",
+    "services": [
+      "massage"
+    ],
+    "modes": [
+      "home_visit",
+      "in_person"
+    ],
+    "blurb": "Studio or at-home postpartum bodywork.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$$",
+    "credentials": "",
+    "phone": "(617) 555-0137",
+    "website": "https://example.com/restore-bodywork",
+    "lastVerified": "2026-11-01",
+    "sample": true,
+    "lat": 42.392,
+    "lng": -71.1047,
+    "area": "Somerville, MA",
+    "homeVisit": {
+      "radiusMiles": 8
+    }
+  },
+  {
+    "id": "sample-028",
+    "name": "Circle of Mamas",
+    "services": [
+      "support_groups"
+    ],
+    "modes": [
+      "in_person",
+      "virtual"
+    ],
+    "blurb": "Weekly peer circles for new mothers; drop-in, no sign-up.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "Free",
+    "credentials": "",
+    "phone": "(617) 555-0138",
+    "website": "https://example.com/circle-of-mamas",
+    "lastVerified": "2026-11-02",
+    "sample": true,
+    "lat": 42.3065,
+    "lng": -71.1079,
+    "area": "Jamaica Plain, Boston, MA",
+    "virtual": {}
+  },
+  {
+    "id": "sample-029",
+    "name": "New Parent Lounge",
+    "services": [
+      "support_groups"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Facilitated groups for the first year, with childcare in the room.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "Free",
+    "credentials": "",
+    "phone": "(617) 555-0139",
+    "website": "https://example.com/new-parent-lounge",
+    "lastVerified": "2026-11-03",
+    "sample": true,
+    "lat": 42.4441,
+    "lng": -71.2251,
+    "area": "Lexington, MA"
+  },
+  {
+    "id": "sample-030",
+    "name": "Evening Light Sleep Consulting",
+    "services": [
+      "sleep"
+    ],
+    "modes": [
+      "virtual"
+    ],
+    "blurb": "Gentle sleep plans for newborns to toddlers, by video.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0140",
+    "website": "https://example.com/evening-light-sleep-consulting",
+    "lastVerified": "2026-11-04",
+    "sample": true,
+    "virtual": {}
+  },
+  {
+    "id": "sample-031",
+    "name": "Cradle to Dream Sleep",
+    "services": [
+      "sleep"
+    ],
+    "modes": [
+      "home_visit",
+      "virtual"
+    ],
+    "blurb": "Overnight help at home plus phone follow-up.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$$",
+    "credentials": "",
+    "phone": "(617) 555-0141",
+    "website": "https://example.com/cradle-to-dream-sleep",
+    "lastVerified": "2026-11-05",
+    "sample": true,
+    "lat": 42.2946,
+    "lng": -71.2937,
+    "area": "Wellesley, MA",
+    "homeVisit": {
+      "radiusMiles": 15
+    },
+    "virtual": {
+      "states": [
+        "MA",
+        "NH",
+        "RI"
+      ]
+    }
+  },
+  {
+    "id": "sample-032",
+    "name": "Return Ready Coaching",
+    "services": [
+      "return_to_work"
+    ],
+    "modes": [
+      "virtual"
+    ],
+    "blurb": "Plan your leave, your return date and your first month back.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0142",
+    "website": "https://example.com/return-ready-coaching",
+    "lastVerified": "2026-11-06",
+    "sample": true,
+    "virtual": {}
+  },
+  {
+    "id": "sample-033",
+    "name": "Second Wind Career Coaching",
+    "services": [
+      "return_to_work"
+    ],
+    "modes": [
+      "in_person",
+      "virtual"
+    ],
+    "blurb": "Career coaching and negotiation support for returning parents.",
+    "languages": [
+      "English"
+    ],
+    "insurance": false,
+    "cost": "$$",
+    "credentials": "",
+    "phone": "(617) 555-0143",
+    "website": "https://example.com/second-wind-career-coaching",
+    "lastVerified": "2026-11-07",
+    "sample": true,
+    "lat": 42.3448,
+    "lng": -71.0875,
+    "area": "Back Bay, Boston, MA",
+    "virtual": {
+      "states": [
+        "MA"
+      ]
+    }
+  },
+  {
+    "id": "sample-034",
+    "name": "Whole Woman Health Collective",
+    "services": [
+      "sexual_repro"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "Postpartum check-ins, contraception and sexual health care.",
+    "languages": [
+      "English",
+      "Spanish"
+    ],
+    "insurance": true,
+    "cost": "",
+    "credentials": "WHNP",
+    "phone": "(617) 555-0144",
+    "website": "https://example.com/whole-woman-health-collective",
+    "lastVerified": "2026-11-08",
+    "sample": true,
+    "lat": 42.3725,
+    "lng": -71.1045,
+    "area": "Cambridge, MA"
+  },
+  {
+    "id": "sample-035",
+    "name": "Greenway OB-GYN & Wellness",
+    "services": [
+      "sexual_repro"
+    ],
+    "modes": [
+      "in_person"
+    ],
+    "blurb": "OB-GYN practice with postpartum and pelvic health visits.",
+    "languages": [
+      "English"
+    ],
+    "insurance": true,
+    "cost": "",
+    "credentials": "",
+    "phone": "(617) 555-0145",
+    "website": "https://example.com/greenway-ob-gyn-wellness",
+    "lastVerified": "2026-04-18",
+    "sample": true,
+    "lat": 42.3403,
+    "lng": -71.2066,
+    "area": "Newton, MA"
+  }
+]

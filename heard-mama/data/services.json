@@ -1,0 +1,47 @@
+{
+  "categories": [
+    { "id": "movement",  "label": "Movement & body",     "color": "#BF7050" },
+    { "id": "clinical",  "label": "Clinical & recovery", "color": "#33553F" },
+    { "id": "emotional", "label": "Emotional support",   "color": "#C9A227" },
+    { "id": "birth",     "label": "Birth & baby",        "color": "#6B8F9C" },
+    { "id": "family",    "label": "Family & practical",  "color": "#7A6A5A" }
+  ],
+  "services": [
+    { "id": "yoga",           "category": "movement",  "label": "Prenatal & postnatal yoga" },
+    { "id": "pilates",        "category": "movement",  "label": "Prenatal & postnatal pilates" },
+    { "id": "fitness",        "category": "movement",  "label": "Prenatal & postnatal fitness coach" },
+    { "id": "massage",        "category": "movement",  "label": "Prenatal & postnatal massage" },
+
+    { "id": "pelvic_floor",   "category": "clinical",  "label": "Pelvic floor PT, C-section scar & abdominal rehab" },
+    { "id": "physio_chiro",   "category": "clinical",  "label": "Physiotherapist / chiropractor" },
+    { "id": "nutrition",      "category": "clinical",  "label": "Nutritionist & dietitian" },
+    { "id": "dentist",        "category": "clinical",  "label": "Dentist" },
+    { "id": "sexual_repro",   "category": "clinical",  "label": "Sexual & reproductive health" },
+
+    { "id": "therapy",        "category": "emotional", "label": "Mental health therapist" },
+    { "id": "support_groups", "category": "emotional", "label": "Support groups" },
+
+    { "id": "childbirth_ed",  "category": "birth",     "label": "Childbirth educator" },
+    { "id": "doula",          "category": "birth",     "label": "Birth & postpartum doula" },
+    { "id": "lactation",      "category": "birth",     "label": "Lactation consultant" },
+    { "id": "sleep",          "category": "birth",     "label": "Sleep consultant" },
+
+    { "id": "childcare",      "category": "family",    "label": "Childcare & daycare" },
+    { "id": "insurance",      "category": "family",    "label": "Insurance & benefits advisor" },
+    { "id": "return_to_work", "category": "family",    "label": "Return-to-work support" }
+  ],
+  "stages": [
+    { "id": "expecting",  "label": "Expecting",
+      "hint": "Preparing for birth",
+      "services": ["childbirth_ed","doula","yoga","pilates","fitness","nutrition","massage","dentist","insurance"] },
+    { "id": "newborn",    "label": "Newborn",
+      "hint": "First 6 weeks",
+      "services": ["doula","lactation","sleep","therapy","support_groups","massage","nutrition","pelvic_floor"] },
+    { "id": "recovering", "label": "Recovering",
+      "hint": "6 weeks to 6 months",
+      "services": ["pelvic_floor","physio_chiro","fitness","yoga","pilates","sexual_repro","support_groups","sleep","therapy"] },
+    { "id": "returning",  "label": "Back to work",
+      "hint": "Planning the return",
+      "services": ["return_to_work","childcare","insurance","sleep","therapy","support_groups"] }
+  ]
+}

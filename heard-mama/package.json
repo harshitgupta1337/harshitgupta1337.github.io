@@ -1,0 +1,10 @@
+{
+  "name": "heard-mama",
+  "private": true,
+  "description": "Heard Mama — static map of services for pregnant and young mothers",
+  "scripts": {
+    "build:data": "node tools/build-data.mjs",
+    "serve": "python3 -m http.server 8080"
+  },
+  "devDependencies": { "zipcodes": "^8.0.0" }
+}

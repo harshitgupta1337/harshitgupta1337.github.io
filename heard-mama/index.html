@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heard Mama · Care for mama, baby &amp; family near you</title>
+  <meta name="description" content="Find prenatal and postpartum care near you: yoga, pelvic floor therapy, doulas, lactation, therapy, childcare and more. Free. No sign-up. Nothing you enter leaves your device.">
+  <meta name="theme-color" content="#1B2F24">
+  <link rel="stylesheet" href="js/vendor/leaflet.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#tabs">Skip to results</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-name">Heard Mama</span>
+      <span class="brand-sub">Care near you</span>
+    </div>
+    <span class="proto-chip" title="Listings in this prototype are fictional examples">Prototype · sample listings</span>
+  </header>
+
+  <div class="support-bar" role="note">
+    <strong>Need to talk to someone now?</strong>
+    Call or text <a class="tel" href="tel:+18338526262">1-833-852-6262</a><span class="sb-long"> (National Maternal Mental Health Hotline)</span>.
+    Free, 24/7. In an emergency, call 911 or 988.
+  </div>
+
+  <main class="app" id="app">
+    <section class="panel" aria-label="Search and results">
+      <div class="panel-inner">
+
+        <div class="intro">
+          <p class="eyebrow">Care for mama, baby &amp; family</p>
+          <h1>Find care that <em>hears</em> you.</h1>
+          <p class="lede">Enter your ZIP code or use your location. What you type stays on your device.</p>
+        </div>
+
+        <form id="search" class="search" novalidate>
+          <label for="zip" class="field-label">Your ZIP code</label>
+          <div class="search-row">
+            <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code"
+                   maxlength="5" placeholder="e.g. 02472" aria-describedby="loc-msg">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+          <button type="button" id="geo" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            Use my location
+          </button>
+          <p id="loc-msg" class="msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <details class="picker" id="picker" open>
+          <summary>
+            <span class="picker-title">What do you need?</span>
+            <span class="picker-count" id="picker-count" hidden></span>
+          </summary>
+
+          <div class="picker-body">
+            <p class="field-label">Where are you in your journey? <span class="muted">(picks a starting set)</span></p>
+            <div class="stages" id="stages" role="group" aria-label="Stage"></div>
+
+            <div class="picker-head">
+              <p class="field-label">Choose one or more services</p>
+              <button type="button" class="link" id="clear-services" hidden>Clear all</button>
+            </div>
+            <div id="services"></div>
+
+            <div class="filters">
+              <button type="button" class="chip" id="f-insurance" aria-pressed="false">Takes insurance</button>
+              <label class="select-wrap">
+                <span class="visually-hidden">Language</span>
+                <select id="f-language"><option value="">Any language</option></select>
+              </label>
+            </div>
+
+            <button type="button" class="btn btn-secondary" id="see-results">See results ↓</button>
+          </div>
+        </details>
+
+        <div class="results-head">
+          <div class="tabs" id="tabs" role="tablist" aria-label="How care is delivered">
+            <button role="tab" id="tab-map" aria-controls="results" aria-selected="true" data-tab="map">
+              On the map <span class="count" id="count-map">0</span>
+            </button>
+            <button role="tab" id="tab-home" aria-controls="results" aria-selected="false" tabindex="-1" data-tab="home">
+              Comes to you <span class="count" id="count-home">–</span>
+            </button>
+            <button role="tab" id="tab-online" aria-controls="results" aria-selected="false" tabindex="-1" data-tab="online">
+              Online <span class="count" id="count-online">0</span>
+            </button>
+          </div>
+        </div>
+        <p class="tab-help" id="tab-help"></p>
+
+        <div id="results" role="tabpanel" aria-labelledby="tab-map" tabindex="-1"></div>
+        <p class="visually-hidden" id="live" aria-live="polite"></p>
+
+        <footer class="foot">
+          <p><strong>Prototype.</strong> Every provider shown here is a fictional example. Real listings are added by hand and checked before they appear.</p>
+          <p><strong>Privacy.</strong> Your ZIP and location are used only in your browser; nothing is sent to or stored by Heard Mama. The map background is loaded from OpenStreetMap, which can see your IP address and the area you view. “Google Maps” and “Website” links open another site.</p>
+          <p>Are you a provider? Listing requests are coming soon.</p>
+        </footer>
+      </div>
+    </section>
+
+    <section class="map-wrap" aria-label="Map">
+      <div id="map" role="region" aria-label="Map of providers. The list updates as you move the map."></div>
+      <div class="map-note" id="map-note" hidden>Map background unavailable. Pins and the list still work.</div>
+      <div class="legend" id="legend" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <button type="button" class="view-toggle" id="view-toggle" aria-pressed="false">Show map</button>
+
+  <script src="js/vendor/leaflet.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
